@@ -1,0 +1,92 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  hero?: string;
+  role?: string;
+  timeline?: string;
+  tools?: string;
+  toolsLabel?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  hero,
+  role,
+  timeline,
+  tools,
+  toolsLabel = 'Tools',
+  tags = [],
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  {hero && (
+    <div class="w-full bg-gray-50 overflow-hidden" style="max-height: 560px;">
+      <img
+        src={hero}
+        alt={title}
+        class="w-full h-full object-cover"
+        style="max-height: 560px;"
+      />
+    </div>
+  )}
+
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <div class="mb-12">
+      {tags.length > 0 && (
+        <p class="text-xs text-gray-500 mb-4" style="font-family: 'IBM Plex Mono', monospace;">
+          {tags.map((tag, i) => (
+            <span>{i > 0 && <span class="mx-1.5">·</span>}{tag}</span>
+          ))}
+        </p>
+      )}
+      <h1 class="text-4xl font-semibold tracking-tight mb-4">{title}</h1>
+      {description && (
+        <p class="text-xl text-gray-500 leading-relaxed">{description}</p>
+      )}
+    </div>
+
+    <!-- Metadata -->
+    {(role || timeline || tools) && (
+      <div class="grid grid-cols-3 gap-6 py-8 border-y border-gray-100 mb-12 text-sm">
+        {role && (
+          <div>
+            <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-1">{role && 'Role'}</p>
+            <p class="font-medium" style="font-family: 'Inter', sans-serif;">{role}</p>
+          </div>
+        )}
+        {timeline && (
+          <div>
+            <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-1">Timeline</p>
+            <p class="font-medium" style="font-family: 'Inter', sans-serif;">{timeline}</p>
+          </div>
+        )}
+        {tools && (
+          <div>
+            <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-1">{toolsLabel}</p>
+            <p class="font-medium" style="font-family: 'Inter', sans-serif;">{tools}</p>
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="prose prose-gray max-w-none">
+      <slot />
+    </div>
+
+    <!-- Back link -->
+    <div class="mt-16 pt-8 border-t border-gray-100">
+      <a href="/" class="text-sm text-gray-400 hover:text-gray-900 transition-colors">
+        ← Back to work
+      </a>
+    </div>
+  </div>
+</BaseLayout>

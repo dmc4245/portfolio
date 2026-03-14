@@ -1,0 +1,162 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  zoomable?: boolean;
+}
+
+const { src, alt, class: className = '', zoomable = true } = Astro.props;
+const id = `lb-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class={`lightbox-trigger cursor-zoom-in ${className}`} data-lightbox={id} data-zoomable={zoomable ? 'true' : 'false'}>
+  <img src={src} alt={alt} class="w-full h-auto rounded-lg" />
+</div>
+
+<!-- Overlay -->
+<div
+  id={id}
+  class="lightbox-overlay fixed inset-0 z-50 hidden bg-black/80 overflow-auto"
+  role="dialog"
+  aria-modal="true"
+  aria-label={alt}
+>
+  <div class="lightbox-inner flex items-center justify-center min-h-full p-8">
+    <div class="relative inline-block">
+      <img
+        src={src}
+        alt={alt}
+        class="lightbox-image block max-w-[90vw] max-h-[90vh] w-auto h-auto rounded-lg shadow-2xl object-contain bg-white select-none"
+        style={`cursor: ${zoomable ? 'zoom-in' : 'default'};`}
+        draggable="false"
+      />
+      <!-- Close button on image -->
+      <button
+        class="lightbox-close absolute top-2 right-2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors text-sm leading-none"
+        aria-label="Close"
+      >✕</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initLightboxes() {
+    document.querySelectorAll<HTMLElement>('.lightbox-trigger').forEach((trigger) => {
+      if (trigger.dataset.init) return;
+      trigger.dataset.init = '1';
+
+      const id = trigger.dataset.lightbox!;
+      const zoomable = trigger.dataset.zoomable !== 'false';
+      const overlay = document.getElementById(id)!;
+      const closeBtn = overlay.querySelector<HTMLElement>('.lightbox-close')!;
+      const img = overlay.querySelector<HTMLImageElement>('.lightbox-image')!;
+
+      let zoomed = false;
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let scrollStartX = 0, scrollStartY = 0;
+      const DRAG_THRESHOLD = 5;
+
+      const inner = overlay.querySelector<HTMLElement>('.lightbox-inner')!;
+
+      function open() {
+        overlay.classList.remove('hidden');
+        overlay.scrollTo(0, 0);
+        zoomed = false;
+        img.style.maxWidth = '';
+        img.style.maxHeight = '';
+        img.style.cursor = zoomable ? 'zoom-in' : 'default';
+        inner.classList.remove('items-start', 'justify-start');
+        inner.classList.add('items-center', 'justify-center');
+      }
+
+      function close() {
+        overlay.classList.add('hidden');
+      }
+
+      trigger.addEventListener('click', open);
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        close();
+      });
+
+      // Zoom toggle on click (only if not a drag)
+      img.addEventListener('click', (e) => {
+        if (isDragging) return;
+        if (!zoomable) return;
+        e.stopPropagation();
+        zoomed = !zoomed;
+        if (zoomed) {
+          img.style.maxWidth = '180vw';
+          img.style.maxHeight = '180vh';
+          img.style.cursor = 'zoom-out';
+          inner.classList.remove('items-center', 'justify-center');
+          inner.classList.add('items-start', 'justify-start');
+          overlay.scrollTo(0, 0);
+        } else {
+          img.style.maxWidth = '';
+          img.style.maxHeight = '';
+          img.style.cursor = 'zoom-in';
+          inner.classList.remove('items-start', 'justify-start');
+          inner.classList.add('items-center', 'justify-center');
+        }
+      });
+
+      // Pan when zoomed
+      img.addEventListener('mousedown', (e) => {
+        if (!zoomed) return;
+        e.preventDefault();
+        isDragging = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        scrollStartX = overlay.scrollLeft;
+        scrollStartY = overlay.scrollTop;
+        img.style.cursor = 'grabbing';
+
+        function onMouseMove(e: MouseEvent) {
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          if (!isDragging && (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD)) {
+            isDragging = true;
+          }
+          if (isDragging) {
+            overlay.scrollLeft = scrollStartX - dx;
+            overlay.scrollTop = scrollStartY - dy;
+          }
+        }
+
+        function onMouseUp() {
+          document.removeEventListener('mousemove', onMouseMove);
+          document.removeEventListener('mouseup', onMouseUp);
+          img.style.cursor = zoomed ? 'zoom-out' : 'zoom-in';
+          // Reset isDragging after click event fires
+          setTimeout(() => { isDragging = false; }, 0);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+      });
+
+      // Click outside image closes
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || (e.target as HTMLElement).closest('.lightbox-inner') === null) {
+          close();
+        }
+      });
+    });
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll<HTMLElement>('.lightbox-overlay:not(.hidden)').forEach((overlay) => {
+          overlay.classList.add('hidden');
+        });
+      }
+    });
+  }
+
+  initLightboxes();
+  document.addEventListener('astro:page-load', initLightboxes);
+</script>

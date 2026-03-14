@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Product design portfolio' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+  <style is:global>
+    h2 { font-family: 'IBM Plex Mono', monospace; font-weight: 400 !important; }
+  </style>
+  </head>
+  <body class="bg-[#F6F7F1] text-gray-900 antialiased">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#F6F7F1]/90 backdrop-blur-sm border-b border-gray-100">
+      <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="/" class="group relative flex items-center text-xs font-semibold uppercase tracking-widest" style="color: #FEC202;">
+          <!-- Text: fades out on hover -->
+          <span class="transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-95 whitespace-nowrap">
+            Diana Minji Chun
+          </span>
+          <!-- Icons: fade in on hover -->
+          <span class="absolute left-0 flex items-center gap-2 opacity-0 scale-90 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-100 pointer-events-none">
+            <svg width="16" height="16" aria-hidden="true"><use href="/icons/sprite.svg#icon-blue-12-star" /></svg>
+            <svg width="16" height="16" aria-hidden="true"><use href="/icons/sprite.svg#icon-green-4-star" /></svg>
+            <svg width="16" height="16" aria-hidden="true"><use href="/icons/sprite.svg#icon-red-flower" /></svg>
+            <svg width="16" height="16" aria-hidden="true"><use href="/icons/sprite.svg#icon-blue-12-star" /></svg>
+            <svg width="16" height="16" aria-hidden="true"><use href="/icons/sprite.svg#icon-green-4-star" /></svg>
+            <svg width="16" height="16" aria-hidden="true"><use href="/icons/sprite.svg#icon-red-flower" /></svg>
+          </span>
+        </a>
+        <div class="flex items-center gap-8 text-sm">
+          <a href="/" class="hover:text-gray-500 transition-colors">Work</a>
+          <a href="/about" class="hover:text-gray-500 transition-colors">About</a>
+          <a href="/contact" class="hover:text-gray-500 transition-colors">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-14">
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-100 mt-24">
+      <div class="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-400">
+        <span>© {new Date().getFullYear()} Diana Minji Chun</span>
+        <a href="mailto:you@example.com" class="hover:text-gray-900 transition-colors">
+          you@example.com
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

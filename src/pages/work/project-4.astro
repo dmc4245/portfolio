@@ -1,0 +1,41 @@
+---
+export const prerender = false;
+
+export const projectMeta = {
+  title: "Driving Copilot engagement through email",
+  image: "/images/Thumbnails/Project 4.png",
+  description: "A one-sentence summary of what this project was and the impact it had.",
+  tags: ["Email campaign", "Visual design", "User engagement"],
+  date: "Jan–Mar 2025",
+  locked: false,
+  href: "/work/project-4",
+};
+
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import VimeoEmbed from '../../components/VimeoEmbed.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+---
+
+<CaseStudyLayout
+  title="Driving Copilot engagement through email"
+  description="A one-sentence summary of what this project was and the impact it had."
+  role="Lead Product Designer"
+  timeline="Jan – Mar 2025"
+  tools="Figma, FullStory, Jira"
+  tags={["Email campaign", "Visual design", "User engagement"]}
+>
+  <h2>Overview</h2>
+  <p>Replace this with your project overview.</p>
+
+  <h2>Problem</h2>
+  <p>Describe the problem you were solving.</p>
+
+  <h2>Process</h2>
+  <p>Walk through your design process.</p>
+
+  <h2>Solution</h2>
+  <p>Describe the final design.</p>
+
+  <h2>Outcome</h2>
+  <p>Share the results.</p>
+</CaseStudyLayout>

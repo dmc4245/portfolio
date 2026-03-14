@@ -1,0 +1,25 @@
+---
+interface Props {
+  id: string;         // Vimeo video ID, e.g. "123456789"
+  caption?: string;
+}
+
+const { id, caption } = Astro.props;
+---
+
+<figure class="my-10">
+  <div class="relative w-full rounded-xl overflow-hidden bg-gray-900" style="padding-top: 56.25%;">
+    <iframe
+      src={`https://player.vimeo.com/video/${id}?byline=0&portrait=0&title=0&color=ffffff`}
+      class="absolute inset-0 w-full h-full"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    />
+  </div>
+  {caption && (
+    <figcaption class="text-sm text-gray-400 text-center mt-3">
+      {caption}
+    </figcaption>
+  )}
+</figure>

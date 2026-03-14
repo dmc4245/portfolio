@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — Diana Minji Chun">
+  <div class="max-w-3xl mx-auto px-6 py-24">
+    <h1 class="text-4xl font-semibold tracking-tight mb-12">About</h1>
+
+    <div class="grid grid-cols-1 tablet:grid-cols-3 gap-12">
+      <!-- Photo -->
+      <div class="tablet:col-span-1">
+        <div class="aspect-square rounded-xl bg-gray-100 overflow-hidden">
+          <!-- Replace with: <img src="/images/photo.jpg" alt="Your Name" class="w-full h-full object-cover" /> -->
+          <div class="w-full h-full flex items-center justify-center text-gray-300 text-sm">
+            Photo
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="tablet:col-span-2 space-y-5 text-gray-600 leading-relaxed">
+        <p>
+          Hi, I'm [Your Name] — a product designer with [X] years of experience
+          designing digital products for [industry/type of work].
+        </p>
+        <p>
+          I specialize in [your specialties, e.g. "taking complex workflows and
+          making them feel simple"]. I care about the details that make software
+          feel thoughtful.
+        </p>
+        <p>
+          Previously at [Company], [Company]. Currently based in [City].
+        </p>
+
+        <div class="pt-4 flex flex-wrap gap-4 text-sm">
+          <a href="mailto:you@example.com" class="font-medium text-gray-900 hover:text-gray-500 transition-colors">
+            Email →
+          </a>
+          <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-gray-500 transition-colors">
+            LinkedIn →
+          </a>
+          <a href="/resume.pdf" target="_blank" class="font-medium text-gray-900 hover:text-gray-500 transition-colors">
+            Resume →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
