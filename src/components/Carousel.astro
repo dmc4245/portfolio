@@ -1,0 +1,92 @@
+---
+interface Slide {
+  src: string;
+  caption?: string;
+}
+
+interface Props {
+  slides: Slide[];
+  autoInterval?: number; // ms, default 3000
+}
+
+const { slides, autoInterval = 3000 } = Astro.props;
+const id = `carousel-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div id={id} class="carousel not-prose w-full" data-interval={autoInterval}>
+  <!-- Image -->
+  <div class="relative overflow-hidden rounded-xl bg-gray-50">
+    {slides.map((slide, i) => (
+      <div class={`carousel-slide ${i === 0 ? '' : 'hidden'}`} data-index={i}>
+        <img src={slide.src} alt={slide.caption ?? ''} class="w-full h-auto object-contain" />
+      </div>
+    ))}
+
+    <!-- Prev / Next -->
+    <button class="carousel-prev absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors" aria-label="Previous">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="carousel-next absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors" aria-label="Next">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+      {slides.map((_, i) => (
+        <button
+          class={`carousel-dot w-1.5 h-1.5 rounded-full transition-colors ${i === 0 ? 'bg-white' : 'bg-white/40'}`}
+          data-index={i}
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+
+  <!-- Caption -->
+  <p class="carousel-caption mt-3 text-sm text-gray-400 text-center" style="font-family: 'IBM Plex Mono', monospace;">
+    {slides[0].caption ?? ''}
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.carousel').forEach((carousel) => {
+    if (carousel.dataset.init) return;
+    carousel.dataset.init = '1';
+
+    const slides = carousel.querySelectorAll<HTMLElement>('.carousel-slide');
+    const dots = carousel.querySelectorAll<HTMLElement>('.carousel-dot');
+    const caption = carousel.querySelector<HTMLElement>('.carousel-caption');
+    const captions = Array.from(slides).map(s => s.querySelector('img')?.alt ?? '');
+    const interval = parseInt(carousel.dataset.interval ?? '3000');
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      slides[current].classList.add('hidden');
+      dots[current].classList.remove('bg-white');
+      dots[current].classList.add('bg-white/40');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.remove('hidden');
+      dots[current].classList.remove('bg-white/40');
+      dots[current].classList.add('bg-white');
+      if (caption) caption.textContent = captions[current];
+    }
+
+    function startAuto() {
+      timer = setInterval(() => goTo(current + 1), interval);
+    }
+
+    function resetAuto() {
+      clearInterval(timer);
+      startAuto();
+    }
+
+    carousel.querySelector('.carousel-prev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    carousel.querySelector('.carousel-next')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index ?? '0')); resetAuto(); });
+    });
+
+    startAuto();
+  });
+</script>

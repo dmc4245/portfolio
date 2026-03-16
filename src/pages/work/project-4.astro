@@ -4,9 +4,9 @@ export const prerender = false;
 export const projectMeta = {
   title: "Driving Copilot engagement through email",
   image: "/images/Thumbnails/Project 4.png",
-  description: "A one-sentence summary of what this project was and the impact it had.",
+  description: "Designing an email system that informs, nudges, and supports Copilot adoption at scale.",
   tags: ["Email campaign", "Visual design", "User engagement"],
-  date: "Jan–Mar 2025",
+  date: "Oct 2024",
   locked: false,
   href: "/work/project-4",
 };
@@ -14,28 +14,69 @@ export const projectMeta = {
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import VimeoEmbed from '../../components/VimeoEmbed.astro';
 import ImageGallery from '../../components/ImageGallery.astro';
+import ImageLightbox from '../../components/ImageLightbox.astro';
+import Carousel from '../../components/Carousel.astro';
+import EmailWindow from '../../components/EmailWindow.astro';
 ---
 
 <CaseStudyLayout
   title="Driving Copilot engagement through email"
-  description="A one-sentence summary of what this project was and the impact it had."
+  description="Designing an email system that informs, nudges, and supports Copilot adoption at scale."
   role="Lead Product Designer"
-  timeline="Jan – Mar 2025"
-  tools="Figma, FullStory, Jira"
+  timeline="Oct 2024"
+  tools="Design team, Content, Research"
+  toolsLabel="Collaboration"
   tags={["Email campaign", "Visual design", "User engagement"]}
 >
   <h2>Overview</h2>
-  <p>Replace this with your project overview.</p>
+  <p>This design brainstorm was part of a growth design sprint focused on shaping Copilot's upsell strategy. We explored a lifecycle approach using targeted communications to help eligible information workers discover, understand, and adopt Copilot Business Chat. The goal was to use timely, value‑led touchpoints to inform and remind users, share practical tips, reduce early drop‑off, and create transparency around Copilot's enterprise capabilities—ultimately guiding users toward successful adoption and upgrade.</p>
 
-  <h2>Problem</h2>
-  <p>Describe the problem you were solving.</p>
+  <h2>Design principles</h2>
+  <div class="not-prose grid grid-cols-1 tablet:grid-cols-3 gap-6 mt-6">
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2 flex items-center gap-2">
+        <span class="inline-block" style="transition: transform 1.2s ease;" onmouseenter="this.style.transform='rotate(180deg)'" onmouseleave="this.style.transform='rotate(0deg)'"><svg width="18" height="18" aria-hidden="true"><use href="/icons/sprite.svg#icon-red-flower" /></svg></span>
+        Personalized
+      </h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Email is an intimate space with built-in trust. We know who we are talking to and respect the relationship we have.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2 flex items-center gap-2">
+        <span class="inline-block" style="transition: transform 1.2s ease;" onmouseenter="this.style.transform='rotate(180deg)'" onmouseleave="this.style.transform='rotate(0deg)'"><svg width="18" height="18" aria-hidden="true"><use href="/icons/sprite.svg#icon-green-4-star" /></svg></span>
+        Simple to understand
+      </h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Content should be straightforward. Options should be limited to a bespoke few, if any. Paths should cover different learning styles and knowledge levels.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2 flex items-center gap-2">
+        <span class="inline-block" style="transition: transform 1.2s ease;" onmouseenter="this.style.transform='rotate(180deg)'" onmouseleave="this.style.transform='rotate(0deg)'"><svg width="18" height="18" aria-hidden="true"><use href="/icons/sprite.svg#icon-blue-12-star" /></svg></span>
+        Productive
+      </h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Reading email is work. Take them to the product as quickly as possible. If there is reading, make it worth customers' time. Content should be actionable and informative. Make the engagement process itself feel productive.</p>
+    </div>
+  </div>
 
-  <h2>Process</h2>
-  <p>Walk through your design process.</p>
+  <h2>Framework</h2>
+  <div class="not-prose mt-6 tablet:-mx-[10%]">
+    <ImageLightbox
+      src="/images/Email - framework.png"
+      alt="Email framework diagram"
+    />
+  </div>
 
-  <h2>Solution</h2>
-  <p>Describe the final design.</p>
+  <h2>Email Mockup</h2>
+  <p>Daisy is a financial analyst at a large company. Her IT admin recently invited her team to try Microsoft's Copilot commercial license. Click the inbox items below to see example emails she would receive.</p>
+  <div class="not-prose mt-6 tablet:-mx-[20%]">
+  <EmailWindow emails={[
+    { sender: "Microsoft Copilot", subject: "You are invited to try Copilot",  date: "Day 0",  to: "Daisy Kapoor", image: "/images/Email Mockup/Day 0 Usecase 1.png"  },
+    { sender: "Microsoft Copilot", subject: "Let's get to know Copilot",        date: "Day 3",  to: "Daisy Kapoor", image: "/images/Email Mockup/Day 3 Usecase 3.png"  },
+    { sender: "Microsoft Copilot", subject: "Have you tried Copilot like this?", date: "Day 7",  to: "Daisy Kapoor", image: "/images/Email Mockup/Day 7 Usecase 1.png"  },
+    { sender: "Microsoft Copilot", subject: "Effortless productivity",           date: "Day 15", to: "Daisy Kapoor", image: "/images/Email Mockup/Day 15 Usecase 1.png" },
+    { sender: "Microsoft Copilot", subject: "Only a few days left",              date: "Day 21", to: "Daisy Kapoor", image: "/images/Email Mockup/Day 21 Usecase 1.png" },
+    { sender: "Microsoft Copilot", subject: "Trial ended. Request a license",    date: "Day 30", to: "Daisy Kapoor", image: "/images/Email Mockup/Day 30 Usecase 1.png" },
+  ]} />
+  </div>
 
   <h2>Outcome</h2>
-  <p>Share the results.</p>
+  <p>The lifecycle and messaging strategy developed in this sprint became a foundational model used across several Copilot growth workstreams. Applied most recently to an email campaign, the approach drove meaningful engagement and reactivation for 2000K users, validating its scalability and effectiveness.</p>
 </CaseStudyLayout>
