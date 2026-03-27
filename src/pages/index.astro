@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import LandingAnimation from '../components/LandingAnimation.astro';
 
 const projectModules = await Astro.glob('./work/project-*.astro');
 const projects = projectModules
@@ -10,6 +11,7 @@ const projects = projectModules
 ---
 
 <BaseLayout title="Diana Minji Chun — Product Designer">
+  <LandingAnimation />
   <div class="max-w-5xl mx-auto px-6 desktop:flex desktop:items-start">
 
     <!-- Hero -->
