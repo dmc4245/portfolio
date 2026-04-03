@@ -2,203 +2,178 @@
 export const prerender = false;
 
 export const projectMeta = {
-  title: "M365 Freemium Growth Experiment: Interactive Onboarding",
-  image: "/images/Thumbnails/Project 1.png",
-  description: "Guiding Freemium Users Forward With Progress and Small Wins",
-  tags: ["Design strategy", "B2C", "Freemium upsell"],
-  date: "May–July 2025",
+  title: "Designing consent at the scale of 800 million",
+  image: "/images/Thumbnails/Project 5.png",
+  description: "UX for Unified Consent: the first cross-platform privacy infrastructure in Microsoft's consumer ecosystem.",
+  tags: ["Privacy", "Service Design", "Cross-platform"],
+  date: "2026",
   locked: true,
   href: "/work/project-1",
 };
 
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
-import VimeoEmbed from '../../components/VimeoEmbed.astro';
-import ImageGallery from '../../components/ImageGallery.astro';
 ---
 
-
 <CaseStudyLayout
-  title="M365 Freemium Growth Experiment: Interactive Onboarding"
-  description="Guiding Freemium Users Forward With Progress and Small Wins"
-  role="Lead product designer"
-  timeline="May–July 2025"
+  title="Designing consent at the scale of 800 million"
+  description="UX for Unified Consent: the first cross-platform privacy infrastructure in Microsoft's consumer ecosystem."
+  tags={["Privacy", "Service Design", "Cross-platform"]}
+  role="Product Designer"
+  timeline="2021–2022"
+  tools="UX PM, Engineers, Legal, Content, Research, Design System Team"
   toolsLabel="Collaboration"
-  tools="PM, Engineering, Content, Research, Data science, Business, Design system team"
-  tags={["Design strategy", "B2C", "Freemium upsell"]}
 >
   <h2>Overview</h2>
-  <p>
-    <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.3154 0.000222234C10.8771 0.0081577 11.326 0.469793 11.3184 1.03147L11.2432 6.39085L13.9883 1.78636C14.276 1.30368 14.9011 1.14613 15.3838 1.43382C15.8661 1.72163 16.0239 2.34583 15.7363 2.82835L12.9912 7.43186L17.6719 4.81663C18.1623 4.54271 18.7815 4.7179 19.0557 5.20823C19.3298 5.69871 19.1545 6.31883 18.6641 6.593L14.0801 9.1555H19.333C19.8948 9.15562 20.3506 9.61126 20.3506 10.1731C20.3506 10.7349 19.8948 11.1905 19.333 11.1907H13.9727L18.6152 13.8713C19.1018 14.1523 19.2682 14.7744 18.9873 15.261C18.7063 15.7474 18.0842 15.9139 17.5977 15.633L12.9551 12.9524L15.6357 17.5959C15.9165 18.0825 15.7502 18.7047 15.2637 18.9856C14.7771 19.2665 14.155 19.0991 13.874 18.6125L11.1387 13.8752L11.0635 19.3459C11.0554 19.9075 10.5939 20.3567 10.0322 20.3489C9.4707 20.3409 9.02176 19.8791 9.0293 19.3176L9.10352 13.9553L6.35938 18.5608C6.07171 19.0433 5.44745 19.2018 4.96484 18.9143C4.4823 18.6267 4.32397 18.0024 4.61133 17.5198L7.35645 12.9133L2.67676 15.5295C2.18647 15.8033 1.56718 15.628 1.29297 15.1379C1.01882 14.6475 1.19417 14.0274 1.68457 13.7532L6.26855 11.1907H1.01758C0.455729 11.1906 -2.45599e-08 10.7349 0 10.1731C2.49941e-05 9.61123 0.455744 9.15556 1.01758 9.1555H6.37793L1.73633 6.47581C1.24979 6.19482 1.08333 5.57178 1.36426 5.08518C1.64533 4.599 2.26747 4.43234 2.75391 4.71311L7.39551 7.39378L4.71582 2.7512C4.43497 2.26459 4.60229 1.64248 5.08887 1.36155C5.57542 1.08081 6.19758 1.24715 6.47852 1.73362L9.20801 6.46116L9.28418 1.00315C9.29213 0.441425 9.75367 -0.00758007 10.3154 0.000222234Z" fill="#ADD0EE"/></svg> Each month, over 30 million unlicensed users launch our apps in view-only mode—and 97% of them churn from the ecosystem. To address this, I began by addressing the root cause: <strong>a fragmented, overwhelming onboarding experience</strong> that drove early drop‑off. By <strong>consolidating setup into a single, progress‑driven flow</strong>, we created momentum through visible completion cues. This shift increased early engagement and encouraged users to take core actions that support long‑term adoption.
-  </p>
-
-  <h2>Problem</h2>
-  <div class="not-prose grid grid-cols-1 gap-10">
-    <div class="text-base text-gray-700 leading-relaxed space-y-6">
-      <div class="space-y-3">
-        <p class="font-bold text-gray-900">Cohesive onboarding journey is missing</p>
-        <p>
-          <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.3154 0.000222234C10.8771 0.0081577 11.326 0.469793 11.3184 1.03147L11.2432 6.39085L13.9883 1.78636C14.276 1.30368 14.9011 1.14613 15.3838 1.43382C15.8661 1.72163 16.0239 2.34583 15.7363 2.82835L12.9912 7.43186L17.6719 4.81663C18.1623 4.54271 18.7815 4.7179 19.0557 5.20823C19.3298 5.69871 19.1545 6.31883 18.6641 6.593L14.0801 9.1555H19.333C19.8948 9.15562 20.3506 9.61126 20.3506 10.1731C20.3506 10.7349 19.8948 11.1905 19.333 11.1907H13.9727L18.6152 13.8713C19.1018 14.1523 19.2682 14.7744 18.9873 15.261C18.7063 15.7474 18.0842 15.9139 17.5977 15.633L12.9551 12.9524L15.6357 17.5959C15.9165 18.0825 15.7502 18.7047 15.2637 18.9856C14.7771 19.2665 14.155 19.0991 13.874 18.6125L11.1387 13.8752L11.0635 19.3459C11.0554 19.9075 10.5939 20.3567 10.0322 20.3489C9.4707 20.3409 9.02176 19.8791 9.0293 19.3176L9.10352 13.9553L6.35938 18.5608C6.07171 19.0433 5.44745 19.2018 4.96484 18.9143C4.4823 18.6267 4.32397 18.0024 4.61133 17.5198L7.35645 12.9133L2.67676 15.5295C2.18647 15.8033 1.56718 15.628 1.29297 15.1379C1.01882 14.6475 1.19417 14.0274 1.68457 13.7532L6.26855 11.1907H1.01758C0.455729 11.1906 -2.45599e-08 10.7349 0 10.1731C2.49941e-05 9.61123 0.455744 9.15556 1.01758 9.1555H6.37793L1.73633 6.47581C1.24979 6.19482 1.08333 5.57178 1.36426 5.08518C1.64533 4.599 2.26747 4.43234 2.75391 4.71311L7.39551 7.39378L4.71582 2.7512C4.43497 2.26459 4.60229 1.64248 5.08887 1.36155C5.57542 1.08081 6.19758 1.24715 6.47852 1.73362L9.20801 6.46116L9.28418 1.00315C9.29213 0.441425 9.75367 -0.00758007 10.3154 0.000222234Z" fill="#ADD0EE"/></svg>
-          Onboarding task completion rate is low. This is because we were missing onboarding experience that
-          <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.17321 1.49304C8.5795 -0.497681 11.4284 -0.497681 11.8347 1.49304L12.1315 2.94729C12.2111 3.33714 12.6748 3.50568 12.9867 3.25811L14.1503 2.33458C15.743 1.07036 17.9254 2.89885 16.9551 4.6846L16.2463 5.98911C16.0563 6.33881 16.3031 6.76558 16.7014 6.77612L18.1872 6.81545C20.2212 6.86928 20.7159 9.67068 18.823 10.4159L17.4403 10.9603C17.0696 11.1062 16.9839 11.5915 17.2822 11.8552L18.3951 12.839C19.9186 14.1857 18.4941 16.6492 16.5644 16.0052L15.1547 15.5347C14.7768 15.4086 14.3987 15.7253 14.4575 16.1188L14.6767 17.5867C14.9768 19.5961 12.2997 20.5691 11.236 18.8371L10.459 17.572C10.2507 17.2328 9.75718 17.2328 9.54888 17.572L8.77185 18.8371C7.70817 20.5691 5.03109 19.5961 5.33119 17.5867L5.55042 16.1188C5.60919 15.7253 5.23112 15.4086 4.85322 15.5347L3.4435 16.0052C1.51375 16.6492 0.0893017 14.1857 1.61277 12.839L2.72568 11.8552C3.02402 11.5915 2.93832 11.1062 2.56764 10.9603L1.18487 10.4159C-0.708007 9.67068 -0.213301 6.86928 1.82068 6.81545L3.30653 6.77612C3.70484 6.76558 3.95161 6.33881 3.76159 5.98911L3.05277 4.6846C2.08247 2.89885 4.26485 1.07036 5.85763 2.33458L7.02117 3.25811C7.33308 3.50568 7.79685 3.33714 7.87641 2.94729L8.17321 1.49304Z" fill="#FF3B01"/></svg>
-           guide users to the 'good state' where product is functioning to its optimal level such as signing in and saving files to OneDrive.
-        </p>
-      </div>
-      <div class="space-y-3">
-        <p class="font-bold text-gray-900">Lack of user control leading to overwhelm</p>
-        <p>
-          <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.17321 1.49304C8.5795 -0.497681 11.4284 -0.497681 11.8347 1.49304L12.1315 2.94729C12.2111 3.33714 12.6748 3.50568 12.9867 3.25811L14.1503 2.33458C15.743 1.07036 17.9254 2.89885 16.9551 4.6846L16.2463 5.98911C16.0563 6.33881 16.3031 6.76558 16.7014 6.77612L18.1872 6.81545C20.2212 6.86928 20.7159 9.67068 18.823 10.4159L17.4403 10.9603C17.0696 11.1062 16.9839 11.5915 17.2822 11.8552L18.3951 12.839C19.9186 14.1857 18.4941 16.6492 16.5644 16.0052L15.1547 15.5347C14.7768 15.4086 14.3987 15.7253 14.4575 16.1188L14.6767 17.5867C14.9768 19.5961 12.2997 20.5691 11.236 18.8371L10.459 17.572C10.2507 17.2328 9.75718 17.2328 9.54888 17.572L8.77185 18.8371C7.70817 20.5691 5.03109 19.5961 5.33119 17.5867L5.55042 16.1188C5.60919 15.7253 5.23112 15.4086 4.85322 15.5347L3.4435 16.0052C1.51375 16.6492 0.0893017 14.1857 1.61277 12.839L2.72568 11.8552C3.02402 11.5915 2.93832 11.1062 2.56764 10.9603L1.18487 10.4159C-0.708007 9.67068 -0.213301 6.86928 1.82068 6.81545L3.30653 6.77612C3.70484 6.76558 3.95161 6.33881 3.76159 5.98911L3.05277 4.6846C2.08247 2.89885 4.26485 1.07036 5.85763 2.33458L7.02117 3.25811C7.33308 3.50568 7.79685 3.33714 7.87641 2.94729L8.17321 1.49304Z" fill="#FF3B01"/></svg>
-          An overload of pop‑ups and instructional UI, without a clear hierarchy, made setup difficult to navigate, resulting in a <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.3154 0.000222234C10.8771 0.0081577 11.326 0.469793 11.3184 1.03147L11.2432 6.39085L13.9883 1.78636C14.276 1.30368 14.9011 1.14613 15.3838 1.43382C15.8661 1.72163 16.0239 2.34583 15.7363 2.82835L12.9912 7.43186L17.6719 4.81663C18.1623 4.54271 18.7815 4.7179 19.0557 5.20823C19.3298 5.69871 19.1545 6.31883 18.6641 6.593L14.0801 9.1555H19.333C19.8948 9.15562 20.3506 9.61126 20.3506 10.1731C20.3506 10.7349 19.8948 11.1905 19.333 11.1907H13.9727L18.6152 13.8713C19.1018 14.1523 19.2682 14.7744 18.9873 15.261C18.7063 15.7474 18.0842 15.9139 17.5977 15.633L12.9551 12.9524L15.6357 17.5959C15.9165 18.0825 15.7502 18.7047 15.2637 18.9856C14.7771 19.2665 14.155 19.0991 13.874 18.6125L11.1387 13.8752L11.0635 19.3459C11.0554 19.9075 10.5939 20.3567 10.0322 20.3489C9.4707 20.3409 9.02176 19.8791 9.0293 19.3176L9.10352 13.9553L6.35938 18.5608C6.07171 19.0433 5.44745 19.2018 4.96484 18.9143C4.4823 18.6267 4.32397 18.0024 4.61133 17.5198L7.35645 12.9133L2.67676 15.5295C2.18647 15.8033 1.56718 15.628 1.29297 15.1379C1.01882 14.6475 1.19417 14.0274 1.68457 13.7532L6.26855 11.1907H1.01758C0.455729 11.1906 -2.45599e-08 10.7349 0 10.1731C2.49941e-05 9.61123 0.455744 9.15556 1.01758 9.1555H6.37793L1.73633 6.47581C1.24979 6.19482 1.08333 5.57178 1.36426 5.08518C1.64533 4.599 2.26747 4.43234 2.75391 4.71311L7.39551 7.39378L4.71582 2.7512C4.43497 2.26459 4.60229 1.64248 5.08887 1.36155C5.57542 1.08081 6.19758 1.24715 6.47852 1.73362L9.20801 6.46116L9.28418 1.00315C9.29213 0.441425 9.75367 -0.00758007 10.3154 0.000222234Z" fill="#ADD0EE"/></svg>
-          43% drop‑off by users’ second session.
-        </p>
-      </div>
-    </div>
-    <div class="rounded-lg overflow-hidden">
-      <img src="/images/Setup Progress-Problem.gif" alt="Existing M365 onboarding experience showing fragmented setup flow" class="w-auto max-w-full h-auto shadow-md outline outline-[2px] outline-[#B8B8B8]" />
-    </div>
-  </div>
-
-  <h2>Design Explorations</h2>
-  <h3>Information architecture</h3>
-  <p>
-    Consolidating all setup tasks into a single flow introduced a risk: information overload. To address this, we focused first on information architecture—deciding what to show and how much context users actually needed to take action. Through stakeholder alignment, we agreed that early task completion was more important than full user comprehension at this stage. In parallel, user research centered on a simple goal: did the experience feel easy and compelling enough to engage with? <strong>We ultimately landed on a progress‑focused design that reduced cognitive load while creating forward momentum</strong>, using the Zeigarnik Effect to encourage continued engagement without overwhelming users with detail.
-  </p>
-  <div class="not-prose grid grid-cols-1 tablet:grid-cols-3 gap-y-8 gap-x-[10%] mt-6 tablet:-mx-[10%]">
-    <!-- Task focused -->
-    <div class="space-y-3">
-      <img src="/images/Setup Progress-Design process-task focused.png" alt="Task focused design exploration" class="w-[80%] mx-auto h-auto rounded-lg block" />
-      <div class="text-xs text-gray-700">
-        <p><strong>Task focused</strong> Show each task as a large card with full details, giving users immediate clarity without extra clicks—but at the cost of making it harder to see other task options at a glance.</p>
-      </div>
-    </div>
-    <!-- Process focused -->
-    <div class="space-y-3">
-      <img src="/images/Setup Progress-Design process-process focused.png" alt="Process focused design exploration" class="w-[80%] mx-auto h-auto rounded-lg block" />
-      <div class="text-xs text-gray-700">
-        <p><strong>Process focused</strong> Visually emphasize the progress bar while displaying all tasks as simplified checkmark cards, maximizing the Zeigarnik Effect through visible progress—but with minimal task detail provided</p>
-      </div>
-    </div>
-    <!-- Overview -->
-    <div class="space-y-3">
-      <img src="/images/Setup Progress-Design process-Overview.png" alt="Overview design exploration" class="w-[80%] mx-auto h-auto rounded-lg block" />
-      <div class="text-xs text-gray-700">
-        <p><strong>Overview</strong> Show all tasks in a list view, with the next task expanded in a large detail card below—making progress visible and context clear, but at the risk of information overload and increased scrolling.</p>
-      </div>
-    </div>
-  </div>
-
-  <h3>Visual tone</h3>
-  <p>
-    We then refined the visual tone to introduce moments of delight and further support engagement. At the same time, we were mindful that this is a secondary task within productivity tool- the goal was assistance, not distraction. Through user testing learned that users preferred a calmer, more restrained tone consistent with Microsoft's brand. As a result, we focused on conveying progress through subtle, purposeful motion rather than overt game mechanics.
-  </p>
-  <div class="not-prose grid grid-cols-1 tablet:grid-cols-3 gap-y-8 gap-x-[10%] mt-6 tablet:-mx-[10%]">
-    <!-- Badge Status -->
-    <div class="space-y-3">
-      <img src="/images/Setup Progress-Design process-Badge status.png" alt="Badge status design exploration" class="w-[80%] mx-auto h-auto rounded-lg block" />
-      <div class="text-xs text-gray-700">
-        <p><strong>Badge Status</strong> Users earn badges and titles as they complete tasks. Best suited for multi-path journeys and varied achievements.</p>
-      </div>
-    </div>
-    <!-- Completion loading -->
-    <div class="space-y-3">
-      <img src="/images/Setup Progress-Design process-Completion loading.png" alt="Completion loading design exploration" class="w-[80%] mx-auto h-auto rounded-lg block" />
-      <div class="text-xs text-gray-700">
-        <p><strong>Completion loading</strong> A color-filling trophy was explored as a completion metaphor, but it implied a reward that the tasks didn't actually deliver.</p>
-      </div>
-    </div>
-    <!-- Process tracking -->
-    <div class="space-y-3">
-      <img src="/images/Setup Progress-Design process-Progress tracking.png" alt="Progress tracking design exploration" class="w-[80%] mx-auto h-auto rounded-lg block" />
-      <div class="text-xs text-gray-700">
-        <p><strong>Process tracking</strong> A check-mark animation with a bead completing the circle reinforced task progression while staying visually consistent with Microsoft 365's checklist patterns and calm productivity tone.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Uncomment and replace with your Vimeo video ID:
-  <VimeoEmbed id="YOUR_VIMEO_ID" caption="Prototype walkthrough" />
-  -->
-
-  <h2>Outcome</h2>
-  <div class="not-prose grid grid-cols-1 tablet:grid-cols-2 gap-12 mt-6">
-    <!-- Left: text content -->
-    <div class="space-y-8 text-sm text-gray-700">
-      <!-- Item 1: Green star -->
-      <div>
-        <p class="font-semibold text-gray-900 mb-2">
-          <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5674 13.5674C13.5603 13.6091 12.4059 20.3506 10.1748 20.3506C7.94439 20.3497 6.7907 13.6113 6.7832 13.5674C6.73312 13.5588 0.000849867 12.4052 0 10.1758C2.92427e-07 7.9458 6.73505 6.79142 6.7832 6.7832C6.79212 6.73096 7.94648 0 10.1758 0C12.4045 0.000824531 13.5581 6.72881 13.5674 6.7832C13.6138 6.79113 20.3506 7.94551 20.3506 10.1758C20.3498 12.4054 13.6164 13.559 13.5674 13.5674Z" fill="#92C159"/></svg> Shipped first motion across the current WXP.
-        </p>
-        <p class="leading-relaxed">This work introduced the first instance of motion across the current Word,Excel, and PowerPoint. Motion was used intentionally—not as decoration, but as a way to provide immediate feedback, communicate progress, and set an emotional tone aligned with productivity. We learned the power of motion as a relationship-building tool, helping users feel oriented, acknowledged, and guided through setup.</p>
-      </div>
-      <!-- Item 2: Blue star -->
-      <div>
-        <p class="font-semibold text-gray-900 mb-2">
-          <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.3154 0.000222234C10.8771 0.0081577 11.326 0.469793 11.3184 1.03147L11.2432 6.39085L13.9883 1.78636C14.276 1.30368 14.9011 1.14613 15.3838 1.43382C15.8661 1.72163 16.0239 2.34583 15.7363 2.82835L12.9912 7.43186L17.6719 4.81663C18.1623 4.54271 18.7815 4.7179 19.0557 5.20823C19.3298 5.69871 19.1545 6.31883 18.6641 6.593L14.0801 9.1555H19.333C19.8948 9.15562 20.3506 9.61126 20.3506 10.1731C20.3506 10.7349 19.8948 11.1905 19.333 11.1907H13.9727L18.6152 13.8713C19.1018 14.1523 19.2682 14.7744 18.9873 15.261C18.7063 15.7474 18.0842 15.9139 17.5977 15.633L12.9551 12.9524L15.6357 17.5959C15.9165 18.0825 15.7502 18.7047 15.2637 18.9856C14.7771 19.2665 14.155 19.0991 13.874 18.6125L11.1387 13.8752L11.0635 19.3459C11.0554 19.9075 10.5939 20.3567 10.0322 20.3489C9.4707 20.3409 9.02176 19.8791 9.0293 19.3176L9.10352 13.9553L6.35938 18.5608C6.07171 19.0433 5.44745 19.2018 4.96484 18.9143C4.4823 18.6267 4.32397 18.0024 4.61133 17.5198L7.35645 12.9133L2.67676 15.5295C2.18647 15.8033 1.56718 15.628 1.29297 15.1379C1.01882 14.6475 1.19417 14.0274 1.68457 13.7532L6.26855 11.1907H1.01758C0.455729 11.1906 -2.45599e-08 10.7349 0 10.1731C2.49941e-05 9.61123 0.455744 9.15556 1.01758 9.1555H6.37793L1.73633 6.47581C1.24979 6.19482 1.08333 5.57178 1.36426 5.08518C1.64533 4.599 2.26747 4.43234 2.75391 4.71311L7.39551 7.39378L4.71582 2.7512C4.43497 2.26459 4.60229 1.64248 5.08887 1.36155C5.57542 1.08081 6.19758 1.24715 6.47852 1.73362L9.20801 6.46116L9.28418 1.00315C9.29213 0.441425 9.75367 -0.00758007 10.3154 0.000222234Z" fill="#ADD0EE"/></svg> Increased early engagement.
-        </p>
-        <p class="leading-relaxed mb-2">Increased click‑through rates for Setup Progress were statistically significant than default sidepane content (ads), particularly for key tasks like Free vs. Premium and In‑app Tour.</p>
-        <p class="leading-relaxed">In Word, we saw a lift in Day 0 Core Actions, indicating that users were more likely to take meaningful actions during their first session.</p>
-      </div>
-      <!-- Item 3: Red flower -->
-      <div>
-        <p class="font-semibold text-gray-900 mb-2">
-          <svg style="display: inline; width: 1em; height: 1em; vertical-align: -0.15em;" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.17321 1.49304C8.5795 -0.497681 11.4284 -0.497681 11.8347 1.49304L12.1315 2.94729C12.2111 3.33714 12.6748 3.50568 12.9867 3.25811L14.1503 2.33458C15.743 1.07036 17.9254 2.89885 16.9551 4.6846L16.2463 5.98911C16.0563 6.33881 16.3031 6.76558 16.7014 6.77612L18.1872 6.81545C20.2212 6.86928 20.7159 9.67068 18.823 10.4159L17.4403 10.9603C17.0696 11.1062 16.9839 11.5915 17.2822 11.8552L18.3951 12.839C19.9186 14.1857 18.4941 16.6492 16.5644 16.0052L15.1547 15.5347C14.7768 15.4086 14.3987 15.7253 14.4575 16.1188L14.6767 17.5867C14.9768 19.5961 12.2997 20.5691 11.236 18.8371L10.459 17.572C10.2507 17.2328 9.75718 17.2328 9.54888 17.572L8.77185 18.8371C7.70817 20.5691 5.03109 19.5961 5.33119 17.5867L5.55042 16.1188C5.60919 15.7253 5.23112 15.4086 4.85322 15.5347L3.4435 16.0052C1.51375 16.6492 0.0893017 14.1857 1.61277 12.839L2.72568 11.8552C3.02402 11.5915 2.93832 11.1062 2.56764 10.9603L1.18487 10.4159C-0.708007 9.67068 -0.213301 6.86928 1.82068 6.81545L3.30653 6.77612C3.70484 6.76558 3.95161 6.33881 3.76159 5.98911L3.05277 4.6846C2.08247 2.89885 4.26485 1.07036 5.85763 2.33458L7.02117 3.25811C7.33308 3.50568 7.79685 3.33714 7.87641 2.94729L8.17321 1.49304Z" fill="#FF3B01"/></svg> Tradeoff: it may keep users in Free longer
-        </p>
-        <p class="leading-relaxed">Subscription conversion dipped, likely due to clearer visibility of the Free vs. Paid distinction. While this transparency may have kept some users in Free longer, it provided valuable insight into how clarity and trust can influence both engagement and monetization.</p>
-      </div>
-    </div>
-    <!-- Right: annotated image -->
+  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
     <div>
-      <div class="flex items-stretch">
-        <div class="w-[60%] shrink-0 relative">
-          <img src="/images/Setup progress-Results.png" alt="Final setup progress design" class="w-auto max-w-full h-auto block" />
-          <div class="absolute w-2 h-2 bg-gray-300 rounded-full" style="top: 7%; right: -4px; transform: translateY(-50%);"></div>
-          <div class="absolute w-2 h-2 bg-gray-300 rounded-full" style="top: 25%; right: -4px; transform: translateY(-50%);"></div>
-          <div class="absolute w-2 h-2 bg-gray-300 rounded-full" style="top: 70%; right: -4px; transform: translateY(-50%);"></div>
-        </div>
-        <div class="flex-1 relative">
-          <div class="absolute" style="top: 7%; left: 0; right: 0; transform: translateY(-50%);">
-            <div class="relative pl-6">
-              <div class="absolute left-0 top-1/2 w-6 h-px bg-gray-300"></div>
-              <div class="bg-white border border-gray-200 rounded-2xl p-3">
-                <p class="font-semibold text-xs">Side pane</p>
-              </div>
-            </div>
-          </div>
-          <div class="absolute" style="top: 25%; left: 0; right: 0; transform: translateY(-50%);">
-            <div class="relative pl-6">
-              <div class="absolute left-0 top-1/2 w-6 h-px bg-gray-300"></div>
-              <div class="bg-white border border-gray-200 rounded-2xl p-3">
-                <p class="font-semibold text-xs">Progress level</p>
-              </div>
-            </div>
-          </div>
-          <div class="absolute" style="top: 70%; left: 0; right: 0; transform: translateY(-50%);">
-            <div class="relative pl-6">
-              <div class="absolute left-0 top-1/2 w-6 h-px bg-gray-300"></div>
-              <div class="bg-white border border-gray-200 rounded-2xl p-3">
-                <p class="font-semibold text-xs">Task cards</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">Problem</p>
+      <p class="text-sm text-gray-500 leading-relaxed">Microsoft's consumer products operated as data silos — users re-encountered misaligned, repetitive consent experiences across every app they used.</p>
+    </div>
+    <div>
+      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">Solution</p>
+      <p class="text-sm text-gray-500 leading-relaxed">A single account-level privacy notice, built on a shared infrastructure, that remembers a user's choice across every Microsoft product — designed to actually be understood, not just accepted.</p>
+    </div>
+    <div>
+      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">Impact</p>
+      <p class="text-sm text-gray-500 leading-relaxed">Enabled cross-product personalization and intelligent recommendations through unified consent for over 2.2 billion users. Reached 800 million consented MAU across Windows, macOS, iOS, Android, and web.</p>
+    </div>
+  </div>
+
+  <h2>Before designing a single screen, I mapped the full service</h2>
+  <p>Privacy consent sounds like a UI problem. It isn't.</p>
+  <p>To ship a notice that was genuinely account-level — not just labeled that way — we needed shared infrastructure that didn't yet exist: a service that could hold a user's consent record, serve the right experience based on their region and regulatory context, and propagate their choice across every Microsoft product in real time.</p>
+  <p>I started by meeting with stakeholders across engineering, legal, privacy, and product to understand how each piece of the system connected — and where the gaps were. The blueprint below is what came out of that process: a map of every layer from regulatory requirement to user-facing moment, across five stages of the consent journey.</p>
+
+  <div class="not-prose mt-6 tablet:-mx-[10%]">
+    <img src="/images/Privacy-Service-design-framework.png" alt="Privacy service map — a blueprint showing seven stages across five layers: user journey, UX, front of stage, backstage (data request, data storage, support system), and policy & governance." class="w-full rounded-lg" />
+  </div>
+
+  <p>Three things the blueprint revealed that shaped the design:</p>
+
+  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">The line of visibility was the hardest design problem.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Everything above it — what users see — had to feel simple and trustworthy. Everything below it had to handle extraordinary complexity: multi-region regulatory rules, real-time flag propagation, immutable audit logs for regulators. Keeping those two worlds coherent was the central tension of the project.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Scope had to be communicated architecturally, not just verbally.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">The blueprint made clear that users would only understand their consent was account-wide if the experience itself signaled that — not just the copy. That insight directly drove the SISU dialog decision in the next phase.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Legal, engineering, and design had different definitions of "done."</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Mapping the full service gave us a shared artifact that made those gaps visible early — before they became launch blockers.</p>
+    </div>
+  </div>
+
+  <h2>What users actually need from a privacy experience</h2>
+  <p>A generative study and literature review surfaced four principles that shaped every design decision that followed.</p>
+  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Trust is built through transparency, not reassurance.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Users don't want to be told their data is safe — they want to see and control how it's used. Confidence comes from capability, not promises.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Value exchange has to be obvious and worth it.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Consent without a clear benefit felt coercive. Users needed to understand what they were getting, not just what they were giving up.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Control has to be real, not decorative.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Easy access to granular settings wasn't a nice-to-have — it was the threshold for credibility. A consent notice without meaningful follow-through erodes trust faster than no notice at all.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">People respond to stories, not legalese.</h3>
+
+      <p class="text-sm text-gray-500 leading-relaxed">Clear examples, concrete visuals, and plain language outperformed dense policy copy in every context reviewed.</p>
+    </div>
+  </div>
+
+  <h2>Testing the visual language of trust</h2>
+  <p>With principles in hand, I designed and ran a targeted study to test two specific visual questions before committing to a system at 800M-user scale.</p>
+
+  <div class="not-prose grid grid-cols-1 gap-8 mt-6">
+    <div>
+      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-3">Question 1</p>
+      <h3 class="font-medium text-gray-900 mb-3">Consistent dialog or native-to-app?</h3>
+      <p class="text-sm text-gray-500 leading-relaxed mb-3">The intuitive answer was to match each app's native UI — Edge should feel like Edge, Office should feel like Office. Testing proved the opposite.</p>
+      <p class="text-sm text-gray-500 leading-relaxed mb-3">When the consent dialog adopted the visual language of the host app, users assumed the privacy notice was scoped to that app only — even when the copy explicitly stated otherwise. The container was overriding the content.</p>
+      <p class="text-sm text-gray-500 leading-relaxed mb-3">The fix was counterintuitive: use Microsoft's most recognizable dialog pattern, the Sign-In / Sign-Up (SISU) dialog. Users already associate SISU with account-level decisions that span Microsoft. By borrowing that container, we borrowed that mental model.</p>
+      <p class="text-sm text-gray-500 leading-relaxed">I partnered with the Microsoft Design System team to adapt SISU to appear coherently across all surfaces without feeling jarring. One deliberate exception: button color matches the native app. That single gesture of local context was enough to prevent the experience from feeling foreign — while keeping the scope unmistakably account-wide.</p>
+      <div class="mt-6 tablet:-mx-[10%]">
+        <img src="/images/Privacy-User-test-Q1.png" alt="Study follow-up questions asking users which products would be impacted by their consent choice — showing two dialog variants side by side" class="w-full rounded-lg" />
       </div>
-      <div class="mt-4 space-y-3">
-        <div>
-          <p class="font-semibold text-sm mb-1">Side pane</p>
-          <p class="text-xs text-gray-500 leading-relaxed">The setup progress tracker is tucked into the side pane, guiding users through setup at their own pace.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-sm mb-1">Progress level</p>
-          <p class="text-xs text-gray-500 leading-relaxed">Progress levels visually mark each completed task, with subtle motion providing immediate feedback and reinforcing momentum toward completion.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-sm mb-1">Task cards</p>
-          <p class="text-xs text-gray-500 leading-relaxed">Tasks are presented as simple cards with a checkbox and short description, making the setup feel approachable, lightweight, and easy to complete.</p>
-        </div>
+    </div>
+    <div>
+      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-3">Question 2</p>
+      <h3 class="font-medium text-gray-900 mb-3">Does imagery help or distract?</h3>
+      <p class="text-sm text-gray-500 leading-relaxed mb-3">Users in authentication and onboarding flows move fast — heads down, task-focused. We found that custom illustration created enough visual intrigue to interrupt that autopilot mode and prompt genuine reading.</p>
+      <p class="text-sm text-gray-500 leading-relaxed">I partnered with the brand team to develop original illustrations purpose-built for this consent moment — not stock, not decorative, but designed to signal that something meaningful was being asked.</p>
+      <div class="mt-6 tablet:-mx-[10%]">
+        <img src="/images/Privacy-Usertest-Q2.png" alt="WIP illustration metaphors for privacy moments: Account Privacy Settings Hero, Signed in, Privacy Settings, Privacy Review, Advanced Personalization — alongside colorful app icons" class="w-full rounded-lg" />
       </div>
     </div>
   </div>
 
-  <VimeoEmbed id="1172790255" />
+  <h2>Designing for comprehension, not compliance</h2>
+  <p>As we partnered with legal, the text kept growing. More clauses, more caveats, more coverage. As the UX team, we pushed back on a core assumption: that saying more equals more transparency.</p>
+  <p>To settle it with evidence rather than opinion, I designed a comprehension study embedded in a realistic task flow — users were asked to sign in to edit a document, then immediately asked what they remembered seeing. We tested three layouts: a block of text, an accordion, and a paragraph format with bolded headers.</p>
 
+  <div class="not-prose mt-6 tablet:-mx-[10%]">
+    <img src="/images/Privacy-User-test-Comprehension.png" alt="Three consent dialog layouts tested side by side: Brief 1 paragraph, Accordion, and Paragraphs with bolded headers — all in the Microsoft SISU dialog" class="w-full rounded-lg" />
+  </div>
 
+  <p>What we found reshaped the design in three ways.</p>
+  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Layout: paragraphs win, but length is still a risk.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">The paragraph format — bolded header, descriptive text below — outperformed both alternatives on recall. But users flagged the tension themselves: "Would I actually read this much when I'm just trying to open Word?" Comprehension and patience aren't the same thing.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Button strings carry more weight than we assumed.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Users were reading CTAs as signals about where they were in the process. "Sign in" made users feel they hadn't fully authenticated yet — creating confusion when paired with a consent notice. We tested "Sign in," "Continue," and "Got it" and found the string could either anchor or undermine the experience.</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Word choice at the micro level changed perceived risk.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">"Sync" read as exposure. "Save" read as security. Two words, same underlying action, completely different trust response. Every word in the consent notice was load-bearing.</p>
+    </div>
+  </div>
+  <p>The outcome: we prioritized comprehension as the shared metric — it was the one value every stakeholder, from legal to engineering to privacy advocates, could rally behind.</p>
+
+  <h2>Speccing a system that had to work everywhere</h2>
+  <p>The final design phase was less about a single screen and more about a system that had to behave correctly across 5 platforms, 5 apps, and dozens of product team conventions — each with their own components, interaction patterns, and engineering constraints.</p>
+  <p>I met with every product owner individually to understand their native app behaviors before writing a single spec. The goal wasn't to override their patterns — it was to find the highest common denominator that felt coherent without feeling foreign.</p>
+
+  <div class="not-prose mt-6 tablet:-mx-[10%]">
+    <iframe
+      style="border: 1px solid rgba(0, 0, 0, 0.1);"
+      width="100%"
+      height="600"
+      src="https://embed.figma.com/design/G1gATdicSyfKdg5rZZXMAs/Website-Linked?node-id=1-42&embed-host=share"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <p>What the spec had to solve for:</p>
+  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Cross-platform coherence without uniformity.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">The same consent moment needed to work on Windows OS, macOS, iOS, Android, and web — each with different motion behaviors, type rendering, and component libraries. The spec defined what had to stay fixed (dialog container, copy structure, illustration placement) and what could flex (button color, native transitions).</p>
+    </div>
+    <div>
+      <h3 class="font-medium text-gray-900 mb-2">Engineering handoff at scale.</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">With multiple product teams implementing in parallel, annotation ambiguity wasn't an option. I documented behavioral states, edge cases, and platform-specific exceptions explicitly — so implementation decisions didn't get made by engineers without design input.</p>
+    </div>
+  </div>
+
+  <h2>Impact</h2>
+  <p>Unified Consent shipped across 5 platforms and 5 apps, reaching 800 million Microsoft consumer users — hitting the business goal of 99% of active targetable users by end of CY23.</p>
+  <p>More than a product launch, it established a shared privacy infrastructure that eliminated data silos across Microsoft's consumer ecosystem for the first time.</p>
+
+  <div class="not-prose grid grid-cols-1 gap-6 mt-8">
+    <blockquote class="border-l-2 border-gray-200 pl-6">
+      <p class="text-gray-600 leading-relaxed italic">"Diana always asks great questions that help us stay rooted in the 'why' — and she does this respectfully, keeping different perspectives in mind. Different engineering teams came to her for accessibility guidance and she was prompt and patient throughout."</p>
+    </blockquote>
+    <blockquote class="border-l-2 border-gray-200 pl-6">
+      <p class="text-gray-600 leading-relaxed italic">"You coordinated the UX of Unified Consent for dozens of apps with their specific design languages and ensured that the experience shows high usability and 'natural-ness' on each platform. Our developers have always found the spec to be very useful and mostly self-explanatory."</p>
+    </blockquote>
+  </div>
 </CaseStudyLayout>

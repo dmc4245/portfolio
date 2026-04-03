@@ -10,9 +10,10 @@ if (Astro.request.method === 'POST') {
   const submitted = data.get('password');
 
   if (submitted === password) {
-    Astro.cookies.set('portfolio_auth', 'authenticated', {
+    const expires = Date.now() + 1000 * 60 * 60 * 24 * 30; // 30 days from now
+    Astro.cookies.set('portfolio_auth', `authenticated:${expires}`, {
       path: '/',
-      maxAge: 60 * 60 * 24 * 30, // 30 days
+      maxAge: 60 * 60 * 24 * 30,
       httpOnly: true,
       secure: import.meta.env.PROD,
       sameSite: 'lax',

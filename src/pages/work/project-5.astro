@@ -2,178 +2,81 @@
 export const prerender = false;
 
 export const projectMeta = {
-  title: "Designing consent at the scale of 800 million",
-  image: "/images/Thumbnails/Project 5.png",
-  description: "UX for Unified Consent: the first cross-platform privacy infrastructure in Microsoft's consumer ecosystem.",
-  tags: ["Privacy", "Service Design", "Cross-platform"],
-  date: "2026",
+  title: "Driving Copilot engagement through email",
+  image: "/images/Thumbnails/Project 4.png",
+  description: "Designing an email system that informs, nudges, and supports Copilot adoption at scale.",
+  tags: ["Email campaign", "Visual design", "User engagement"],
+  date: "Oct 2024",
   locked: false,
   href: "/work/project-5",
 };
 
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import VimeoEmbed from '../../components/VimeoEmbed.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import ImageLightbox from '../../components/ImageLightbox.astro';
+import Carousel from '../../components/Carousel.astro';
+import EmailWindow from '../../components/EmailWindow.astro';
 ---
 
 <CaseStudyLayout
-  title="Designing consent at the scale of 800 million"
-  description="UX for Unified Consent: the first cross-platform privacy infrastructure in Microsoft's consumer ecosystem."
-  tags={["Privacy", "Service Design", "Cross-platform"]}
-  role="Product Designer"
-  timeline="2021–2022"
-  tools="UX PM, Engineers, Legal, Content, Research, Design System Team"
+  title="Driving Copilot engagement through email"
+  description="Designing an email system that informs, nudges, and supports Copilot adoption at scale."
+  role="Lead Product Designer"
+  timeline="Oct 2024"
+  tools="Design team, Content, Research"
   toolsLabel="Collaboration"
+  tags={["Email campaign", "Visual design", "User engagement"]}
 >
   <h2>Overview</h2>
-  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
+  <p>This design brainstorm was part of a growth design sprint focused on shaping Copilot's upsell strategy. We explored a lifecycle approach using targeted communications to help eligible information workers discover, understand, and adopt Copilot Business Chat. The goal was to use timely, value‑led touchpoints to inform and remind users, share practical tips, reduce early drop‑off, and create transparency around Copilot's enterprise capabilities—ultimately guiding users toward successful adoption and upgrade.</p>
+
+  <h2>Design principles</h2>
+  <div class="not-prose grid grid-cols-1 tablet:grid-cols-3 gap-6 mt-6">
     <div>
-      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">Problem</p>
-      <p class="text-sm text-gray-500 leading-relaxed">Microsoft's consumer products operated as data silos — users re-encountered misaligned, repetitive consent experiences across every app they used.</p>
+      <h3 class="font-medium text-gray-900 mb-2 flex items-center gap-2">
+        <span class="inline-block" style="transition: transform 1.2s ease;" onmouseenter="this.style.transform='rotate(180deg)'" onmouseleave="this.style.transform='rotate(0deg)'"><svg width="18" height="18" aria-hidden="true"><use href="/icons/sprite.svg#icon-red-flower" /></svg></span>
+        Personalized
+      </h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Email is an intimate space with built-in trust. We know who we are talking to and respect the relationship we have.</p>
     </div>
     <div>
-      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">Solution</p>
-      <p class="text-sm text-gray-500 leading-relaxed">A single account-level privacy notice, built on a shared infrastructure, that remembers a user's choice across every Microsoft product — designed to actually be understood, not just accepted.</p>
+      <h3 class="font-medium text-gray-900 mb-2 flex items-center gap-2">
+        <span class="inline-block" style="transition: transform 1.2s ease;" onmouseenter="this.style.transform='rotate(180deg)'" onmouseleave="this.style.transform='rotate(0deg)'"><svg width="18" height="18" aria-hidden="true"><use href="/icons/sprite.svg#icon-green-4-star" /></svg></span>
+        Simple to understand
+      </h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Content should be straightforward. Options should be limited to a bespoke few, if any. Paths should cover different learning styles and knowledge levels.</p>
     </div>
     <div>
-      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">Impact</p>
-      <p class="text-sm text-gray-500 leading-relaxed">Enabled cross-product personalization and intelligent recommendations through unified consent for over 2.2 billion users. Reached 800 million consented MAU across Windows, macOS, iOS, Android, and web.</p>
+      <h3 class="font-medium text-gray-900 mb-2 flex items-center gap-2">
+        <span class="inline-block" style="transition: transform 1.2s ease;" onmouseenter="this.style.transform='rotate(180deg)'" onmouseleave="this.style.transform='rotate(0deg)'"><svg width="18" height="18" aria-hidden="true"><use href="/icons/sprite.svg#icon-blue-12-star" /></svg></span>
+        Productive
+      </h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Reading email is work. Take them to the product as quickly as possible. If there is reading, make it worth customers' time. Content should be actionable and informative. Make the engagement process itself feel productive.</p>
     </div>
   </div>
 
-  <h2>Before designing a single screen, I mapped the full service</h2>
-  <p>Privacy consent sounds like a UI problem. It isn't.</p>
-  <p>To ship a notice that was genuinely account-level — not just labeled that way — we needed shared infrastructure that didn't yet exist: a service that could hold a user's consent record, serve the right experience based on their region and regulatory context, and propagate their choice across every Microsoft product in real time.</p>
-  <p>I started by meeting with stakeholders across engineering, legal, privacy, and product to understand how each piece of the system connected — and where the gaps were. The blueprint below is what came out of that process: a map of every layer from regulatory requirement to user-facing moment, across five stages of the consent journey.</p>
-
+  <h2>Framework</h2>
   <div class="not-prose mt-6 tablet:-mx-[10%]">
-    <img src="/images/Privacy-Service-design-framework.png" alt="Privacy service map — a blueprint showing seven stages across five layers: user journey, UX, front of stage, backstage (data request, data storage, support system), and policy & governance." class="w-full rounded-lg" />
+    <ImageLightbox
+      src="/images/Email - framework.png"
+      alt="Email framework diagram"
+    />
   </div>
 
-  <p>Three things the blueprint revealed that shaped the design:</p>
-
-  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">The line of visibility was the hardest design problem.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">Everything above it — what users see — had to feel simple and trustworthy. Everything below it had to handle extraordinary complexity: multi-region regulatory rules, real-time flag propagation, immutable audit logs for regulators. Keeping those two worlds coherent was the central tension of the project.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Scope had to be communicated architecturally, not just verbally.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">The blueprint made clear that users would only understand their consent was account-wide if the experience itself signaled that — not just the copy. That insight directly drove the SISU dialog decision in the next phase.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Legal, engineering, and design had different definitions of "done."</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">Mapping the full service gave us a shared artifact that made those gaps visible early — before they became launch blockers.</p>
-    </div>
+  <h2>Email Mockup</h2>
+  <p>Daisy is a financial analyst at a large company. Her IT admin recently invited her team to try Microsoft's Copilot commercial license. Click the inbox items below to see example emails she would receive.</p>
+  <div class="not-prose mt-6 tablet:-mx-[20%]">
+  <EmailWindow emails={[
+    { sender: "Microsoft Copilot", subject: "You are invited to try Copilot",  date: "Day 0",  to: "Daisy Kapoor", image: "/images/Email Mockup/Day 0 Usecase 1.png"  },
+    { sender: "Microsoft Copilot", subject: "Let's get to know Copilot",        date: "Day 3",  to: "Daisy Kapoor", image: "/images/Email Mockup/Day 3 Usecase 3.png"  },
+    { sender: "Microsoft Copilot", subject: "Have you tried Copilot like this?", date: "Day 7",  to: "Daisy Kapoor", image: "/images/Email Mockup/Day 7 Usecase 1.png"  },
+    { sender: "Microsoft Copilot", subject: "Effortless productivity",           date: "Day 15", to: "Daisy Kapoor", image: "/images/Email Mockup/Day 15 Usecase 1.png" },
+    { sender: "Microsoft Copilot", subject: "Only a few days left",              date: "Day 21", to: "Daisy Kapoor", image: "/images/Email Mockup/Day 21 Usecase 1.png" },
+    { sender: "Microsoft Copilot", subject: "Trial ended. Request a license",    date: "Day 30", to: "Daisy Kapoor", image: "/images/Email Mockup/Day 30 Usecase 1.png" },
+  ]} />
   </div>
 
-  <h2>What users actually need from a privacy experience</h2>
-  <p>A generative study and literature review surfaced four principles that shaped every design decision that followed.</p>
-  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Trust is built through transparency, not reassurance.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">Users don't want to be told their data is safe — they want to see and control how it's used. Confidence comes from capability, not promises.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Value exchange has to be obvious and worth it.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">Consent without a clear benefit felt coercive. Users needed to understand what they were getting, not just what they were giving up.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Control has to be real, not decorative.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">Easy access to granular settings wasn't a nice-to-have — it was the threshold for credibility. A consent notice without meaningful follow-through erodes trust faster than no notice at all.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">People respond to stories, not legalese.</h3>
-
-      <p class="text-sm text-gray-500 leading-relaxed">Clear examples, concrete visuals, and plain language outperformed dense policy copy in every context reviewed.</p>
-    </div>
-  </div>
-
-  <h2>Testing the visual language of trust</h2>
-  <p>With principles in hand, I designed and ran a targeted study to test two specific visual questions before committing to a system at 800M-user scale.</p>
-
-  <div class="not-prose grid grid-cols-1 gap-8 mt-6">
-    <div>
-      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-3">Question 1</p>
-      <h3 class="font-medium text-gray-900 mb-3">Consistent dialog or native-to-app?</h3>
-      <p class="text-sm text-gray-500 leading-relaxed mb-3">The intuitive answer was to match each app's native UI — Edge should feel like Edge, Office should feel like Office. Testing proved the opposite.</p>
-      <p class="text-sm text-gray-500 leading-relaxed mb-3">When the consent dialog adopted the visual language of the host app, users assumed the privacy notice was scoped to that app only — even when the copy explicitly stated otherwise. The container was overriding the content.</p>
-      <p class="text-sm text-gray-500 leading-relaxed mb-3">The fix was counterintuitive: use Microsoft's most recognizable dialog pattern, the Sign-In / Sign-Up (SISU) dialog. Users already associate SISU with account-level decisions that span Microsoft. By borrowing that container, we borrowed that mental model.</p>
-      <p class="text-sm text-gray-500 leading-relaxed">I partnered with the Microsoft Design System team to adapt SISU to appear coherently across all surfaces without feeling jarring. One deliberate exception: button color matches the native app. That single gesture of local context was enough to prevent the experience from feeling foreign — while keeping the scope unmistakably account-wide.</p>
-      <div class="mt-6 tablet:-mx-[10%]">
-        <img src="/images/Privacy-User-test-Q1.png" alt="Study follow-up questions asking users which products would be impacted by their consent choice — showing two dialog variants side by side" class="w-full rounded-lg" />
-      </div>
-    </div>
-    <div>
-      <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-3">Question 2</p>
-      <h3 class="font-medium text-gray-900 mb-3">Does imagery help or distract?</h3>
-      <p class="text-sm text-gray-500 leading-relaxed mb-3">Users in authentication and onboarding flows move fast — heads down, task-focused. We found that custom illustration created enough visual intrigue to interrupt that autopilot mode and prompt genuine reading.</p>
-      <p class="text-sm text-gray-500 leading-relaxed">I partnered with the brand team to develop original illustrations purpose-built for this consent moment — not stock, not decorative, but designed to signal that something meaningful was being asked.</p>
-      <div class="mt-6 tablet:-mx-[10%]">
-        <img src="/images/Privacy-Usertest-Q2.png" alt="WIP illustration metaphors for privacy moments: Account Privacy Settings Hero, Signed in, Privacy Settings, Privacy Review, Advanced Personalization — alongside colorful app icons" class="w-full rounded-lg" />
-      </div>
-    </div>
-  </div>
-
-  <h2>Designing for comprehension, not compliance</h2>
-  <p>As we partnered with legal, the text kept growing. More clauses, more caveats, more coverage. As the UX team, we pushed back on a core assumption: that saying more equals more transparency.</p>
-  <p>To settle it with evidence rather than opinion, I designed a comprehension study embedded in a realistic task flow — users were asked to sign in to edit a document, then immediately asked what they remembered seeing. We tested three layouts: a block of text, an accordion, and a paragraph format with bolded headers.</p>
-
-  <div class="not-prose mt-6 tablet:-mx-[10%]">
-    <img src="/images/Privacy-User-test-Comprehension.png" alt="Three consent dialog layouts tested side by side: Brief 1 paragraph, Accordion, and Paragraphs with bolded headers — all in the Microsoft SISU dialog" class="w-full rounded-lg" />
-  </div>
-
-  <p>What we found reshaped the design in three ways.</p>
-  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Layout: paragraphs win, but length is still a risk.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">The paragraph format — bolded header, descriptive text below — outperformed both alternatives on recall. But users flagged the tension themselves: "Would I actually read this much when I'm just trying to open Word?" Comprehension and patience aren't the same thing.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Button strings carry more weight than we assumed.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">Users were reading CTAs as signals about where they were in the process. "Sign in" made users feel they hadn't fully authenticated yet — creating confusion when paired with a consent notice. We tested "Sign in," "Continue," and "Got it" and found the string could either anchor or undermine the experience.</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Word choice at the micro level changed perceived risk.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">"Sync" read as exposure. "Save" read as security. Two words, same underlying action, completely different trust response. Every word in the consent notice was load-bearing.</p>
-    </div>
-  </div>
-  <p>The outcome: we prioritized comprehension as the shared metric — it was the one value every stakeholder, from legal to engineering to privacy advocates, could rally behind.</p>
-
-  <h2>Speccing a system that had to work everywhere</h2>
-  <p>The final design phase was less about a single screen and more about a system that had to behave correctly across 5 platforms, 5 apps, and dozens of product team conventions — each with their own components, interaction patterns, and engineering constraints.</p>
-  <p>I met with every product owner individually to understand their native app behaviors before writing a single spec. The goal wasn't to override their patterns — it was to find the highest common denominator that felt coherent without feeling foreign.</p>
-
-  <div class="not-prose mt-6 tablet:-mx-[10%]">
-    <iframe
-      style="border: 1px solid rgba(0, 0, 0, 0.1);"
-      width="100%"
-      height="600"
-      src="https://embed.figma.com/design/G1gATdicSyfKdg5rZZXMAs/Website-Linked?node-id=1-42&embed-host=share"
-      allowfullscreen
-    ></iframe>
-  </div>
-
-  <p>What the spec had to solve for:</p>
-  <div class="not-prose grid grid-cols-1 gap-6 mt-6">
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Cross-platform coherence without uniformity.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">The same consent moment needed to work on Windows OS, macOS, iOS, Android, and web — each with different motion behaviors, type rendering, and component libraries. The spec defined what had to stay fixed (dialog container, copy structure, illustration placement) and what could flex (button color, native transitions).</p>
-    </div>
-    <div>
-      <h3 class="font-medium text-gray-900 mb-2">Engineering handoff at scale.</h3>
-      <p class="text-sm text-gray-500 leading-relaxed">With multiple product teams implementing in parallel, annotation ambiguity wasn't an option. I documented behavioral states, edge cases, and platform-specific exceptions explicitly — so implementation decisions didn't get made by engineers without design input.</p>
-    </div>
-  </div>
-
-  <h2>Impact</h2>
-  <p>Unified Consent shipped across 5 platforms and 5 apps, reaching 800 million Microsoft consumer users — hitting the business goal of 99% of active targetable users by end of CY23.</p>
-  <p>More than a product launch, it established a shared privacy infrastructure that eliminated data silos across Microsoft's consumer ecosystem for the first time.</p>
-
-  <div class="not-prose grid grid-cols-1 gap-6 mt-8">
-    <blockquote class="border-l-2 border-gray-200 pl-6">
-      <p class="text-gray-600 leading-relaxed italic">"Diana always asks great questions that help us stay rooted in the 'why' — and she does this respectfully, keeping different perspectives in mind. Different engineering teams came to her for accessibility guidance and she was prompt and patient throughout."</p>
-    </blockquote>
-    <blockquote class="border-l-2 border-gray-200 pl-6">
-      <p class="text-gray-600 leading-relaxed italic">"You coordinated the UX of Unified Consent for dozens of apps with their specific design languages and ensured that the experience shows high usability and 'natural-ness' on each platform. Our developers have always found the spec to be very useful and mostly self-explanatory."</p>
-    </blockquote>
-  </div>
+  <h2>Outcome</h2>
+  <p>The lifecycle and messaging strategy developed in this sprint became a foundational model used across several Copilot growth workstreams. Applied most recently to an email campaign, the approach drove meaningful engagement and reactivation for 2000K users, validating its scalability and effectiveness.</p>
 </CaseStudyLayout>
