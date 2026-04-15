@@ -9,8 +9,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="grid grid-cols-1 tablet:grid-cols-3 gap-12">
       <!-- Photo -->
       <div class="tablet:col-span-1">
-        <div class="aspect-square rounded-xl bg-gray-100 overflow-hidden">
-          <img src="/images/diana-chun.jpg" alt="Diana Minji Chun" class="w-full h-full object-cover" />
+        <div class="rounded-xl overflow-hidden">
+          <img id="about-photo" src="/images/diana-chun.jpg" alt="Diana Minji Chun" class="w-full h-auto transition-opacity duration-300" />
         </div>
       </div>
 
@@ -20,21 +20,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Designer who cares about the whole system, not just the screen. I've spent 8 years designing at scale—privacy experiences for 680M Microsoft users, events for the White House and National Geographic, and growth funnels that actually respect people. I'm drawn to messy, complex problems where design meets policy, equity, and real stakes. 
         </p>
         <p>
-          When I'm not designing, I'm spending time playing board games, swimming laps, and going on long walks with my partner, two kids, and a chihuahua.
+          <span id="family-trigger">When I'm not designing, I'm spending time playing board games, swimming laps, and going on long walks with my partner, two kids, and a chihuahua.</span>
         </p>
 
-        <div class="pt-4 flex flex-wrap gap-4 text-sm">
-          <a href="mailto:diana.chun@outlook.com" class="font-medium text-gray-900 hover:text-gray-500 transition-colors">
-            Email →
+        <div class="pt-4 flex flex-wrap gap-4">
+          <a href="/Diana Minji Chun Resume 2026.pdf" target="_blank" class="about-link-icon group relative">
+            <img src="/icons/About links/Resume.svg" alt="Resume" class="w-10 h-10 rounded-lg object-cover" />
+            <span class="about-link-tooltip">Resume</span>
           </a>
-          <a href="https://www.linkedin.com/in/diana-chun-design/" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-gray-500 transition-colors">
-            LinkedIn →
+          <a href="mailto:diana.chun@outlook.com" class="about-link-icon group relative">
+            <img src="/icons/About links/Email.svg" alt="Email" class="w-10 h-10 rounded-lg object-cover" />
+            <span class="about-link-tooltip">Email</span>
           </a>
-          <a href="/Diana Minji Chun Resume 2026.pdf" target="_blank" class="font-medium text-gray-900 hover:text-gray-500 transition-colors">
-            Resume →
+          <a href="https://www.linkedin.com/in/diana-chun-design/" target="_blank" rel="noopener" class="about-link-icon group relative">
+            <img src="/icons/About links/LinkedIn.svg" alt="LinkedIn" class="w-10 h-10 rounded-lg object-cover" />
+            <span class="about-link-tooltip">LinkedIn</span>
+          </a>
+          <a href="https://medium.com/@dianaminjichun" target="_blank" rel="noopener" class="about-link-icon group relative">
+            <img src="/icons/About links/Medium.svg" alt="Medium" class="w-10 h-10 rounded-lg object-cover" />
+            <span class="about-link-tooltip">Medium</span>
           </a>
         </div>
       </div>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const trigger = document.getElementById('family-trigger');
+  const photo = document.getElementById('about-photo') as HTMLImageElement;
+  const original = '/images/diana-chun.jpg';
+  const family = '/images/Family photo.png';
+
+  trigger?.addEventListener('mouseenter', () => { photo.src = family; });
+  trigger?.addEventListener('mouseleave', () => { photo.src = original; });
+</script>
+
+<style>
+  .about-link-icon {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.15s ease;
+  }
+  .about-link-icon:hover {
+    opacity: 0.6;
+  }
+  .about-link-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .about-link-icon:hover .about-link-tooltip {
+    opacity: 1;
+  }
+</style>
