@@ -1,16 +1,18 @@
 ---
 export const projectMeta = {
   title: "Our Ideas Belong Here: Co-designing a Community Investment Fund",
-  image: "/images/Thumbnails/Project 6.svg",
+  image: "/images/Thumbnails/Resume/Project 6.svg",
   description: "Co-designing a community-led participatory capital process that led to community revitalization during the pandemic.",
   tags: ["Co-design", "Participatory capital", "Workshop facilitation"],
   date: "2021",
   locked: false,
   href: "/work/project-6",
+  order: 1,
 };
 
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import AssetImage from '../../components/AssetImage.astro';
+import SectionNav from '../../components/SectionNav.astro';
 
 const dir = '/images/Co-design project assets';
 ---
@@ -36,22 +38,13 @@ const dir = '/images/Co-design project assets';
   <div class="not-prose mt-6">
     <AssetImage dir={dir} name="Co-design-Process" alt="Process diagram: Theory, Action, and Change informing each other" />
   </div>
-  <!-- Phase timeline: inline on small screens, fixed beside the article on desktop -->
-  <nav id="phase-nav" aria-label="Project phases" class="not-prose mt-6 desktop:mt-0 desktop:fixed desktop:top-1/3 desktop:left-[calc(50%-384px-170px)] desktop:w-36">
-    <ol class="relative border-l border-gray-200 ml-1 space-y-5">
-      {[
-        { id: 'context', label: 'Context' },
-        { id: 'theory', label: 'Theory' },
-        { id: 'action', label: 'Action' },
-        { id: 'change', label: 'Change' },
-      ].map(p => (
-        <li class="relative pl-5">
-          <span class="phase-dot absolute -left-[5px] top-1.5 w-[9px] h-[9px] rounded-full bg-gray-300 transition-colors" aria-hidden="true"></span>
-          <a href={`#${p.id}`} data-phase={p.id} class="phase-link block text-sm text-gray-400 hover:text-gray-900 transition-colors">{p.label}</a>
-        </li>
-      ))}
-    </ol>
-  </nav>
+  <!-- Section timeline: inline on small screens, fixed beside the article on desktop -->
+  <SectionNav label="Project phases" items={[
+    { id: 'context', label: 'Context' },
+    { id: 'theory', label: 'Theory' },
+    { id: 'action', label: 'Action' },
+    { id: 'change', label: 'Change' },
+  ]} />
 
   <h3>Warning: Messy project</h3>
   <p>This is a reflective sketch of the project. It is messy at first glance, but I believe the sketch is wonderfully representative of the project's spirit upon close reading. It shows that various engagements and groups are consistently influencing and informing others. The shift in colors indicates the handover of the project from the experts and project holders to the community.</p>
@@ -258,35 +251,4 @@ const dir = '/images/Co-design project assets';
     <a href="https://kilthub.cmu.edu/articles/thesis/Our_Ideas_Belong_Here_Co-Designing_a_Community_Investment_Fund/14824905/1?file=28535307" target="_blank" rel="noopener" class="px-6 py-3 text-xs uppercase tracking-widest bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors">Read the thesis book ↗</a>
   </div>
 </CaseStudyLayout>
-
-<script>
-  const links = [...document.querySelectorAll<HTMLAnchorElement>('.phase-link')];
-  const sections = links.map(l => document.getElementById(l.dataset.phase!)!);
-
-  function update() {
-    const probe = window.innerHeight * 0.35;
-    // Active section = last one whose header has scrolled past the probe line (Context until then)
-    let active = 0;
-    sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= probe) active = i; });
-    links.forEach((l, i) => {
-      const on = i === active;
-      l.classList.toggle('text-gray-900', on);
-      l.classList.toggle('font-semibold', on);
-      l.classList.toggle('text-gray-400', !on);
-      const dot = l.previousElementSibling!;
-      dot.classList.toggle('bg-gray-900', on);
-      dot.classList.toggle('bg-gray-300', !on);
-    });
-  }
-
-  links.forEach((l, i) => l.addEventListener('click', e => {
-    e.preventDefault();
-    sections[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', `#${l.dataset.phase}`);
-  }));
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-</script>
 

@@ -7,9 +7,10 @@ interface Props {
   href: string;
   locked?: boolean;
   date?: string;
+  comingSoon?: boolean;
 }
 
-const { title, description, image, tags = [], href, locked = false, date } = Astro.props;
+const { title, description, image, tags = [], href, locked = false, date, comingSoon = false } = Astro.props;
 
 const meta = [locked ? '🔒' : null, ...tags, date].filter(Boolean).join(' · ');
 ---
@@ -39,6 +40,9 @@ const meta = [locked ? '🔒' : null, ...tags, date].filter(Boolean).join(' · '
   <div class="min-w-0">
     <h3 class="font-medium text-gray-900 group-hover:text-gray-500 transition-colors leading-snug">
       {title}
+      {comingSoon && (
+        <span class="ml-1.5 inline-block align-middle px-2 py-0.5 rounded-full bg-[#FEC202]/25 text-[10px] font-normal uppercase tracking-widest text-gray-700 whitespace-nowrap" style="font-family: 'IBM Plex Mono', monospace;">Coming soon</span>
+      )}
     </h3>
     <p class="mt-1 text-xs text-gray-400 truncate uppercase tracking-widest" style="font-family: 'IBM Plex Mono', monospace;">{meta}</p>
   </div>

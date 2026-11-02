@@ -60,7 +60,7 @@ export const projectMeta = {
   image: '/images/filename.png',
 };
 ```
-The homepage automatically picks up all project files — no manual list to update.
+The homepage and the header Work menu automatically pick up all project files — no manual list to update. Order is by file name; add `order: 1` (2, 3…) to `projectMeta` to pin a project to the top (co-design, project-6, is pinned first).
 
 ## Design Notes
 - Nav logo animates from "Diana Minji Chun" text → decorative SVG icons on hover
@@ -69,7 +69,7 @@ The homepage automatically picks up all project files — no manual list to upda
 - Body uses Inter; Poppins is available via `font-poppins` Tailwind class
 
 ## Case Study Side Nav (preferred pattern — use on case study pages)
-Diana wants this section nav on case study pages going forward. Reference implementation: `src/pages/work/project-6.astro` (`#phase-nav` + its `<script>`).
+Diana wants this section nav on case study pages going forward. Use the `SectionNav` component (`src/components/SectionNav.astro`) with an `items` list of `{ id, label }`; see `project-1.astro` and `project-6.astro`.
 - Vertical timeline: thin gray line, a dot per item, plain text labels (no buttons)
 - First item is **Context** (anchors the Overview `h2`), then the page's main sections (e.g. Theory / Action / Change)
 - Desktop (1200px+): fixed to the left of the article, always visible

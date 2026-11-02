@@ -4,6 +4,15 @@ interface Props {
   description?: string;
 }
 const { title, description = 'Product design portfolio' } = Astro.props;
+
+// Same source and order as the homepage work list
+const projectModules = await Astro.glob('../pages/work/project-*.astro');
+const projects = projectModules
+  .map(mod => mod.projectMeta)
+  .filter(Boolean)
+  // Optional projectMeta.order pins projects to the top; the rest follow by file name
+  .sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.href.localeCompare(b.href));
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -40,7 +49,28 @@ const { title, description = 'Product design portfolio' } = Astro.props;
           </span>
         </a>
         <div class="flex items-center gap-8 text-sm">
-          <a href="/#work" class="desktop:hidden font-poppins font-normal uppercase tracking-widest text-gray-400 hover:text-gray-600 transition-colors">Work</a>
+          <!-- Work dropdown: opens on hover (mouse) or click/tap; lists every project -->
+          <div id="work-menu" class="relative">
+            <button id="work-menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="work-menu-panel" class="flex items-center gap-1 font-poppins font-normal uppercase tracking-widest text-gray-400 hover:text-gray-600 transition-colors">
+              Work
+              <svg class="w-3 h-3 transition-transform" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+            <div id="work-menu-panel" class="hidden fixed left-4 right-4 top-14 tablet:absolute tablet:left-auto tablet:right-0 tablet:top-full tablet:pt-3 tablet:w-80">
+              <ul class="bg-[#F6F7F1] border border-gray-200 rounded-lg shadow-lg p-2">
+                {projects.map(p => {
+                  const current = currentPath === p.href;
+                  return (
+                    <li>
+                      <a href={p.href} aria-current={current ? 'page' : undefined} class={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white transition-colors ${current ? 'bg-white' : ''}`}>
+                        <img src={p.image} alt="" class="w-6 h-6 rounded shrink-0" />
+                        <span class={`text-sm leading-snug ${current ? 'font-semibold text-gray-900' : 'text-gray-700'}`}>{p.title}{p.comingSoon && <span class="ml-1.5 inline-block align-middle px-1.5 py-0.5 rounded-full bg-[#FEC202]/25 text-[10px] font-normal uppercase tracking-widest text-gray-700 whitespace-nowrap" style="font-family: 'IBM Plex Mono', monospace;">Soon</span>}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
           <a href="/about" class="font-poppins font-normal uppercase tracking-widest text-gray-400 hover:text-gray-600 transition-colors">About</a>
         </div>
       </div>
@@ -53,6 +83,30 @@ const { title, description = 'Product design portfolio' } = Astro.props;
           window.dispatchEvent(new CustomEvent('replay-logo-anim'));
         }
       });
+
+      // Work dropdown
+      const workMenu = document.getElementById('work-menu')!;
+      const workBtn = document.getElementById('work-menu-btn')!;
+      const workPanel = document.getElementById('work-menu-panel')!;
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      let closeTimer: ReturnType<typeof setTimeout> | undefined;
+
+      function setWorkMenu(open: boolean) {
+        clearTimeout(closeTimer);
+        workPanel.classList.toggle('hidden', !open);
+        workBtn.setAttribute('aria-expanded', String(open));
+        workBtn.querySelector('svg')!.classList.toggle('rotate-180', open);
+      }
+
+      workBtn.addEventListener('click', () => setWorkMenu(workPanel.classList.contains('hidden')));
+      if (canHover) {
+        workMenu.addEventListener('mouseenter', () => setWorkMenu(true));
+        workMenu.addEventListener('mouseleave', () => { closeTimer = setTimeout(() => setWorkMenu(false), 150); });
+      }
+      document.addEventListener('click', e => { if (!workMenu.contains(e.target as Node)) setWorkMenu(false); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !workPanel.classList.contains('hidden')) { setWorkMenu(false); workBtn.focus(); }
+      });
     </script>
 
     <main class="pt-14">
@@ -60,6 +114,14 @@ const { title, description = 'Product design portfolio' } = Astro.props;
     </main>
 
     <footer class="border-t border-gray-100 mt-24">
+      <!-- AI use disclaimer: on every page, below the content -->
+      <div class="max-w-5xl mx-auto px-6 pt-8">
+        <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family: 'IBM Plex Mono', monospace;">AI use disclaimer</p>
+        <div class="text-xs text-gray-400 max-w-xl leading-relaxed space-y-3">
+          <p>This site was built and written with AI tools — intentionally. I vibe-coded the front-end from scratch using Claude Code, and used Claude and Microsoft Copilot to help format, rewrite, and pressure-test my case study copy.</p>
+          <p>What you're reading reflects my thinking. I directed every decision, approved every word, and verified every number. AI helped me move faster so I can think more deeply.</p>
+        </div>
+      </div>
       <div class="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-400">
         <span>© {new Date().getFullYear()} Diana Minji Chun</span>
         <a href="mailto:diana.chun@outlook.com" class="hover:text-gray-900 transition-colors">

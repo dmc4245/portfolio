@@ -59,6 +59,11 @@
   .piece.visible {
     opacity: 1;
   }
+  /* Clicking during the intro completes it instantly */
+  #landing-overlay.skip-fade .piece,
+  #landing-overlay.skip-fade #landing-enter-btn {
+    transition: none;
+  }
 
   .icon {
     transform-box: fill-box;
@@ -126,6 +131,7 @@
   const FADE_MS     = 900;
 
   let activeTimers: ReturnType<typeof setTimeout>[] = [];
+  let finished = false;
 
   function shuffle<T>(arr: T[]): T[] {
     const a = [...arr];
@@ -147,8 +153,9 @@
     });
     ICONS.forEach(id => document.getElementById(id)!.classList.remove('spinning'));
     btn.classList.remove('visible');
+    finished = false;
 
-    overlay.classList.remove('is-hiding');
+    overlay.classList.remove('is-hiding', 'skip-fade');
     overlay.style.display = 'flex';
 
     const order = shuffle(ALL);
@@ -168,8 +175,27 @@
     activeTimers.push(st);
 
     const buttonAt = allVisibleAt + 200;
-    const bt = setTimeout(() => btn.classList.add('visible'), buttonAt);
+    const bt = setTimeout(() => { btn.classList.add('visible'); finished = true; }, buttonAt);
     activeTimers.push(bt);
+  }
+
+  // Jump to the end state: every piece shown, icons spinning, button ready
+  function finishAnimation() {
+    if (finished) return;
+    finished = true;
+    activeTimers.forEach(clearTimeout);
+    activeTimers = [];
+    overlay.classList.add('skip-fade');
+    ALL.forEach(id => document.getElementById(id)!.classList.add('visible'));
+    ICONS.forEach(id => document.getElementById(id)!.classList.add('spinning'));
+    btn.classList.add('visible');
+  }
+
+  function dismiss() {
+    if (overlay.classList.contains('is-hiding')) return;
+    activeTimers.forEach(clearTimeout);
+    overlay.classList.add('is-hiding');
+    setTimeout(() => { overlay.style.display = 'none'; }, 450);
   }
 
   // ── First-load ────────────────────────────────────────────────────
@@ -182,9 +208,11 @@
   window.addEventListener('replay-logo-anim', playAnimation);
 
   // ── Dismiss ───────────────────────────────────────────────────────
-  btn.addEventListener('click', () => {
-    activeTimers.forEach(clearTimeout);
-    overlay.classList.add('is-hiding');
-    setTimeout(() => { overlay.style.display = 'none'; }, 450);
+  btn.addEventListener('click', dismiss);
+
+  // ── Shortcuts: click finishes the intro, double-click goes straight home ──
+  overlay.addEventListener('click', e => {
+    if (e.target !== btn) finishAnimation();
   });
+  overlay.addEventListener('dblclick', dismiss);
 </script>

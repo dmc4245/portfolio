@@ -1,0 +1,50 @@
+---
+export const projectMeta = {
+  title: "Agentic process for effective Copilot Growth",
+  image: "/images/Thumbnails/Resume/Project 7.png",
+  description: "Designing GrowthMind, an AI employee portal that helps product managers adopt an agentic experimentation process.",
+  tags: ["AI Development", "Service Design", "Employee Experience"],
+  date: "2026",
+  locked: false,
+  comingSoon: true,
+  href: "/work/project-7",
+};
+
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import SectionNav from '../../components/SectionNav.astro';
+---
+
+<CaseStudyLayout
+  title="Agentic process for effective Copilot Growth"
+  description="Designing GrowthMind, an AI employee portal that helps product managers adopt an agentic experimentation process."
+  tags={["AI Development", "Service Design", "Employee Experience"]}
+  role="Research & Design Lead"
+  timeline="July 2026 – ongoing"
+  tools="PM leadership, Engineering leadership, Research director, IC PMs, and IC engineers"
+  toolsLabel="Collaboration"
+>
+  <p class="not-prose inline-block px-3 py-1 rounded-full bg-[#FEC202]/20 text-xs uppercase tracking-widest text-gray-700" style="font-family: 'IBM Plex Mono', monospace;">Coming soon · In progress</p>
+
+  <h2 id="context" class="scroll-mt-20">Context: What is Project GrowthMind?</h2>
+  <p>The Copilot Growth team is shifting from manual, PM-run experiments to an agentic process. AI improves or automates every step: idea generation, experimentation, data collection, and decision-making.</p>
+
+  <!-- Section timeline: inline on small screens, fixed beside the article on desktop -->
+  <SectionNav items={[
+    { id: 'context', label: 'Context' },
+    { id: 'hot-take', label: 'Design hot take' },
+    { id: 'workshop', label: 'Workshop' },
+  ]} />
+
+  <h2 id="hot-take" class="scroll-mt-20">My design hot take: This is about change adoption</h2>
+  <p>All the focus on AI's technological advancement missed a critical aspect: employee adoption. An agentic process will disrupt how the team has always worked. Before we could even debate whether a proposal was good, a few conditions had to be true:</p>
+  <ul>
+    <li>PMs are motivated to visit the portal.</li>
+    <li>Proposals are relevant and actionable.</li>
+    <li>Proposals are easy to digest and quick to review.</li>
+  </ul>
+
+  <h2 id="workshop" class="scroll-mt-20">Service design workshop</h2>
+  <p><strong>How do we create those conditions?</strong></p>
+  <p>I facilitated one-hour workshops with four principal PMs. Using journey mapping, we traced each stage of product development: what PMs do, how they do it, and where the biggest joys and pain points are. We closed with a future-state review to understand their mindset about AI and change.</p>
+  <p class="text-gray-400 italic">Results are coming soon — stay tuned!</p>
+</CaseStudyLayout>

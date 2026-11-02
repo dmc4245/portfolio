@@ -7,7 +7,8 @@ const projectModules = await Astro.glob('./work/project-*.astro');
 const projects = projectModules
   .map(mod => mod.projectMeta)
   .filter(Boolean)
-  .sort((a, b) => a.href.localeCompare(b.href));
+  // Optional projectMeta.order pins projects to the top; the rest follow by file name
+  .sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.href.localeCompare(b.href));
 ---
 
 <BaseLayout title="Diana Minji Chun — Product Designer">
@@ -21,12 +22,12 @@ const projects = projectModules
           <img src="/icons/Diana Icon.png" alt="Diana Minji Chun" class="w-full h-full object-cover" />
         </div>
         <p class="text-base text-gray-500 leading-relaxed">
-          Hi. I'm <strong style="color: #032F98;">Diana Minji Chun</strong> — a product designer who's spent my career bridging community-centered design with execution at scale.
+          Hi, I'm <strong style="color: #032F98;">Diana Minji Chun</strong> — a UX &amp; service designer and avid co-design facilitator.
         </p>
       </div>
       <div class="mt-4 max-w-xl">
         <p class="text-base text-gray-500 leading-relaxed">
-          For my master's thesis at Carnegie Mellon, I co-designed a participatory budgeting process with low-income communities in Pennsylvania. Since then, I've spent five years at Microsoft leading growth design for experiences reaching 800+ million users.
+          I have 9+ years of design experience making complex systems work better for the people who rely on them every day. From Microsoft's growth experiments to civic co-design, I've been turning data and people's voices into practical innovations.
         </p>
         <p class="text-base text-gray-500 leading-relaxed mt-4">I bring together:</p>
         <div class="mt-2 flex flex-col gap-2">
@@ -47,12 +48,6 @@ const projects = projectModules
           I'm looking for work where design strengthens access, builds trust, and creates value — whether that's large companies with global impact, mission-driven organizations, or a few people solving meaningful problems. Find my work interesting? <a href="mailto:diana.chun@outlook.com" class="underline hover:text-gray-700 transition-colors">Let's connect.</a>
         </p>
       </div>
-
-      <h2 class="text-xs uppercase tracking-widest text-gray-400 mt-12 mb-4">AI use disclaimer</h2>
-      <div class="text-xs text-gray-400 max-w-xl leading-relaxed space-y-3">
-        <p>This site was built and written with AI tools — intentionally. I vibe-coded the front-end from scratch using Claude Code, and used Claude and Microsoft Copilot to help format, rewrite, and pressure-test my case study copy.</p>
-        <p>What you're reading reflects my thinking. I directed every decision, approved every word, and verified every number. AI helped me move faster so I can think more deeply.</p>
-      </div>
     </section>
 
     <!-- Work -->
@@ -68,6 +63,7 @@ const projects = projectModules
             href={p.href}
             tags={p.tags}
             locked={p.locked}
+            comingSoon={p.comingSoon}
             date={p.date}
             image={p.image}
           />
