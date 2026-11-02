@@ -68,6 +68,15 @@ The homepage automatically picks up all project files — no manual list to upda
 - h2 tags are globally styled as IBM Plex Mono (set in BaseLayout `<style is:global>`)
 - Body uses Inter; Poppins is available via `font-poppins` Tailwind class
 
+## Case Study Side Nav (preferred pattern — use on case study pages)
+Diana wants this section nav on case study pages going forward. Reference implementation: `src/pages/work/project-6.astro` (`#phase-nav` + its `<script>`).
+- Vertical timeline: thin gray line, a dot per item, plain text labels (no buttons)
+- First item is **Context** (anchors the Overview `h2`), then the page's main sections (e.g. Theory / Action / Change)
+- Desktop (1200px+): fixed to the left of the article, always visible
+- Scroll-spy: the current section's label turns bold `text-gray-900` and its dot fills `bg-gray-900`; Context is active until the first section is reached
+- Clicking an item smooth-scrolls to the section (targets use `scroll-mt-20`)
+- Below desktop: same list renders inline under the intro/Process area
+
 ## Dev Commands
 ```bash
 npm run dev      # localhost:4321

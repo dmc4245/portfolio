@@ -1,0 +1,292 @@
+---
+export const projectMeta = {
+  title: "Our Ideas Belong Here: Co-designing a Community Investment Fund",
+  image: "/images/Thumbnails/Project 6.svg",
+  description: "Co-designing a community-led participatory capital process that led to community revitalization during the pandemic.",
+  tags: ["Co-design", "Participatory capital", "Workshop facilitation"],
+  date: "2021",
+  locked: false,
+  href: "/work/project-6",
+};
+
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import AssetImage from '../../components/AssetImage.astro';
+
+const dir = '/images/Co-design project assets';
+---
+
+<CaseStudyLayout
+  title="Our Ideas Belong Here: Co-designing a Community Investment Fund"
+  description="Co-designing a community-led participatory capital process that led to community revitalization during the pandemic."
+  role="Designer & Facilitator"
+  timeline="2020 – 2021"
+  tools="Sto-Rox community members, community leaders, Carnegie Mellon University"
+  toolsLabel="Collaboration"
+  tags={["Design research", "Co-design", "Participatory capital"]}
+>
+  <div class="not-prose mb-12">
+    <AssetImage dir={dir} name="Co-design-Cover" alt="Our Ideas Belong Here co-design starter kit booklet" />
+  </div>
+
+  <h2 id="context" class="scroll-mt-20">Overview</h2>
+  <p class="text-lg">My thesis starts with this question: <strong>How might a community-led participatory capital process lead to community revitalization?</strong></p>
+  <p>What is Participatory Capital? Simply put, it is a type of <strong>funding that is democratically decided and distributed</strong>. I invited 5 community members to be our co-designers, and designed and facilitated four workshops to listen to their opinions and guide them through collective decision-making. It was truly a fantastic journey to be part of. I saw how co-design allowed a group of individuals to overcome existing power dynamics and barriers to become a collective. With all the learnings, I am creating a co-design starter kit, Our Ideas Belong Here (OIBH), so anyone can experience the power of co-design and be inspired to become a catalyst of social innovation in their community.</p>
+
+  <h2>Process</h2>
+  <div class="not-prose mt-6">
+    <AssetImage dir={dir} name="Co-design-Process" alt="Process diagram: Theory, Action, and Change informing each other" />
+  </div>
+  <!-- Phase timeline: inline on small screens, fixed beside the article on desktop -->
+  <nav id="phase-nav" aria-label="Project phases" class="not-prose mt-6 desktop:mt-0 desktop:fixed desktop:top-1/3 desktop:left-[calc(50%-384px-170px)] desktop:w-36">
+    <ol class="relative border-l border-gray-200 ml-1 space-y-5">
+      {[
+        { id: 'context', label: 'Context' },
+        { id: 'theory', label: 'Theory' },
+        { id: 'action', label: 'Action' },
+        { id: 'change', label: 'Change' },
+      ].map(p => (
+        <li class="relative pl-5">
+          <span class="phase-dot absolute -left-[5px] top-1.5 w-[9px] h-[9px] rounded-full bg-gray-300 transition-colors" aria-hidden="true"></span>
+          <a href={`#${p.id}`} data-phase={p.id} class="phase-link block text-sm text-gray-400 hover:text-gray-900 transition-colors">{p.label}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <h3>Warning: Messy project</h3>
+  <p>This is a reflective sketch of the project. It is messy at first glance, but I believe the sketch is wonderfully representative of the project's spirit upon close reading. It shows that various engagements and groups are consistently influencing and informing others. The shift in colors indicates the handover of the project from the experts and project holders to the community.</p>
+  <p class="text-sm text-gray-400">Click to expand the image.</p>
+  <div class="not-prose mt-4 tablet:-mx-[10%]">
+    <AssetImage dir={dir} name="Co-design-messy project" alt="Reflective sketch of the project from inception through planning, four workshops, and execution" lightbox />
+  </div>
+
+  <!-- Phase I -->
+  <div id="theory" class="not-prose mt-16 pt-8 border-t border-gray-100 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="Co-design-TheoryIcon" alt="Theory icon" class="!w-16 shrink-0 !rounded-none" />
+    <div>
+      <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Phase I</p>
+      <p class="text-2xl font-semibold text-gray-900">Theory</p>
+      <p class="text-sm text-gray-500 mt-1">Defining co-design · Artifact review</p>
+    </div>
+  </div>
+
+  <h3>Defining co-design</h3>
+  <p>My simple definition of co-design is <strong>a methodology where all stakeholders decide and take intentional actions to change their surroundings according to shared values.</strong> I reached this conclusion after reading through many pieces of literature, including ones from Paulo Freire, Ezio Manzini, Kelly Ann McKercher, Kat Holmes, and Fathali M. Moghaddam. These thought leaders had different names for co-design, but they largely shared three common principles.</p>
+  <ol>
+    <li>
+      <strong>Include all stakeholders</strong><br />
+      Our hyperproductive society too often excludes people who are not used to making decisions due to their position, education, or abilities, assuming they would not be able to decide efficiently on matters that would impact their lives. We underestimate the value of lived experiences and overestimate experts' knowledge. However, any solution designed to help the community is most effective when designed with people who have first-hand lived experience of the community and built with shared values among all stakeholders (McKercher, 2020, p. 14).
+    </li>
+    <li>
+      <strong>Start with understanding the past</strong><br />
+      We need to understand that all design solutions constantly react to something that already exists. We should be 're-designers,' acknowledging that there is always an existing system and history we are designing into (Carroll, 2017). We are consistently bringing our previous experiences and biases into our design. When designing a solution that is resilient, we need to have a comprehensive understanding of the past and present through listening to multiple perspectives. Going back to the first principle, this means giving people a platform and autonomy to tell diverse stories about their perspectives.
+    </li>
+    <li>
+      <strong>Acknowledge your positionality and role as a designer</strong><br />
+      Going into the process, the designer must ask: what are we, as outside designers, bringing to the table? In the co-design process, the expert designer plays the role of 'trigger' (introducing ideas and visions to feed and orient the conversation within the coalition) and of facilitator (helping the other participants in the coalition to make the best use of their design skills and augment them)' by visualizing process and creating artifacts along the way (Manzini, 2015, p. 52). To quote <em>Pedagogy of the Oppressed</em> (Freire, 2018), designers 'must elevate the stories from the people and assist people in uncovering the wicked problems of the current system.'
+    </li>
+  </ol>
+
+  <h3>Artifact review</h3>
+  <p>The concept of co-design can be applied to many contexts and to various degrees. To examine how co-design methodology is applied in different contexts, I looked into various organizations working in participative or democratic structures. These case studies gave me clues about the structure of our project and some key questions to tackle, such as the right balance between efficiency and inclusivity, the size and kind of engagement the Sto-Rox community was ready for, and how we would reflect on changes in the community before and after the design to evaluate the success of our project.</p>
+
+  <div class="not-prose grid grid-cols-1 tablet:grid-cols-2 gap-x-8 gap-y-10 mt-8">
+    <div>
+      <p class="font-semibold text-gray-900 mb-2">Treehouse Ecohousing</p>
+      <p class="text-sm text-gray-500 leading-relaxed mb-4">The co-housing community in Bridgewater, Canada, is co-designing their everyday life using sociocracy principles. Sociocracy is a practical example of distributed, sustainable, and scalable decision-making. One thing that was different from our project is that this community's primary purpose is not co-design or co-creation but cohabitation. Therefore, its structure focuses on efficiency over inclusivity.</p>
+      <AssetImage dir={dir} name="Co-design-ArtifactReview-Treehouse" alt="Overlapping Circles model: responsibility group, general group, mission group" lightbox />
+    </div>
+    <div>
+      <p class="font-semibold text-gray-900 mb-2">Enspiral</p>
+      <p class="text-sm text-gray-500 leading-relaxed mb-4">Enspiral is a paid membership organization of freelance professionals with the shared value of non-hierarchical leadership. They use a self-developed digital app to engage everyone via simple majority voting. The use of technology allows the group to stay connected and agile, which is uniquely possible in a highly tech-savvy professional group.</p>
+      <AssetImage dir={dir} name="Co-design-ArtifactReview-Enspiral" alt="Concentric Circle model: members, contributors, catalyst" lightbox />
+    </div>
+    <div>
+      <p class="font-semibold text-gray-900 mb-2">Community-Led Total Sanitation (CLTS)</p>
+      <p class="text-sm text-gray-500 leading-relaxed mb-4">The CLTS project was a social experiment to examine whether existing stocks of social capital had a significant effect on participatory development. I found this study relevant as we went into our workshop series, thinking about the community's readiness and maturity.</p>
+      <AssetImage dir={dir} name="Co-design-ArtifactReview-CLTS" alt="Distributed Circles model: village people, outside aid groups, trigger event" lightbox />
+    </div>
+    <div>
+      <p class="font-semibold text-gray-900 mb-2">Boston Ujima Project</p>
+      <p class="text-sm text-gray-500 leading-relaxed mb-4">This citywide non-profit organization aims to make a participatory capital process accessible to the local community. This project was exciting for me to study because it aligned closely with our intended pilot study. However, their complicated process forces some of the decision-making power to be removed from the general public. This case study made me think about the gains and losses of large co-design and participatory decision-making groups.</p>
+      <AssetImage dir={dir} name="Co-design-ArtifactReview-Ujima" alt="Double Diamond model: Boston citizens voting, core committees, community standards committee" lightbox />
+    </div>
+  </div>
+
+  <!-- Phase II -->
+  <div id="action" class="not-prose mt-16 pt-8 border-t border-gray-100 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="Co-design-ActionIcon" alt="Action icon" class="!w-16 shrink-0 !rounded-none" />
+    <div>
+      <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Phase II</p>
+      <p class="text-2xl font-semibold text-gray-900">Action</p>
+      <p class="text-sm text-gray-500 mt-1">Initial street survey · Recruiting · Workshop design · Workshop facilitation</p>
+    </div>
+  </div>
+
+  <h3>Initial street survey</h3>
+  <p>Going into the Sto-Rox community, I needed to find out what people's day-to-day was like and learn about the diverse lives of the community members. However, I did not yet know the suitable topics to start from or the appropriate language to use. So, I sought the topics and language for the workshops through a simple street survey.</p>
+  <p>I was inspired by Professor Dan Lockton's New Metaphors in designing the survey (Lockton et al., 2019). What kind of metaphors do people use to describe the concepts of participatory capital, such as 'neighborhood' or 'finance'? Asking for metaphors for relevant concepts gave me a glimpse into what kinds of topics are on people's minds, as well as the language and sentiments associated with those topics.</p>
+
+  <p><strong>Overall takeaways</strong></p>
+  <!-- Image floats left so text wraps beneath it instead of leaving empty space -->
+  <div class="not-prose flow-root mt-4 text-base text-gray-700 leading-relaxed">
+    <div class="mb-6 tablet:float-left tablet:w-1/2 tablet:mr-8 tablet:mb-4">
+      <AssetImage dir={dir} name="Co-design-Community quotes" alt="Quotes from the community, such as 'Prosperity as time. It doesn't always mean money.'" lightbox />
+    </div>
+    <div class="space-y-4">
+      <p><strong class="text-gray-800">There is a general sense of 'it used to be better.'</strong> Sto-Rox hit peak population during the 1930s steel era but has been in decline in population and income ever since. Some people talked about having no hope for the future, while others spoke about the cause of the problem, such as a lack of unity.</p>
+      <p><strong class="text-gray-800">There is a sense of community, but it exists in small, disconnected pockets.</strong> Many of the Sto-Rox community members are people who have lived in the area all their lives. They care about the community deeply. However, I observed that people have small, close-knit groups but mistrust the community as a whole.</p>
+      <p><strong class="text-gray-800">We need both external and internal motives for community revitalization.</strong> This was an interesting point to me as someone coming from the outside with outside resources. One of the participants said, 'You need guidance but you also need willingness (from the community).' Sensing the value of independence, I want to further investigate the right balance of external and internal motives.</p>
+      <p><strong class="text-gray-800">Money is more than money.</strong> It means more time, it implies enablement, it means bigger possibility. Money is a tool. I realized that when talking about finance and capital investment, we need to talk about the core purpose beyond monetary support.</p>
+      <p><strong class="text-gray-800">Bringing in diverse racial backgrounds, past trauma, and lifestyles to our design is essential to build a community.</strong> Sto-Rox is very diverse in culture across many spectrums. It is also a neighborhood going through a transition and possible gentrification. How do we keep diversity and authenticity while bringing people together as a community?</p>
+    </div>
+  </div>
+
+  <h3>Recruiting</h3>
+  <div class="not-prose flow-root mt-4 text-base text-gray-700 leading-relaxed">
+    <div class="mb-6 tablet:float-right tablet:w-1/2 tablet:ml-8 tablet:mb-4">
+      <AssetImage dir={dir} name="Co-design-Recruitingdiagram" alt="Step 1: identify knowledge types. Step 2: match knowledge with collaboration types on a dominant–marginalized, people–task oriented matrix" lightbox />
+    </div>
+    <div class="space-y-4">
+      <p>I wanted to push the definition of diversity to include class, gender, background, occupation, and world views when recruiting workshop participants. We did this through the creative adaptation of a conventional design tool: the persona. First, I identified the different types of knowledge that I saw in the generative research phase. I tried to balance the existing hierarchy among the knowledge types with collaboration types using a 2x2 matrix. One axis ran from dominant knowledge to marginalized knowledge (which comes from lived experience), and the other ran from people-oriented to task-oriented collaboration styles. Using the personas as a reference, community partners nominated community members who would bring diverse voices to the table. This process preemptively evened out the power differences between the workshop participants.</p>
+      <p>Read more about the <a href="https://medium.com/design-master-thesis-journal/who-is-our-co-designer-99c56dd15e58" target="_blank" rel="noopener" class="font-semibold underline hover:text-gray-900">final personas here ↗</a></p>
+    </div>
+  </div>
+
+  <h3>Workshop design</h3>
+  <p>Community leaders and I talked about the definition of participatory capital and a few priorities for the workshops. We all agreed that the revitalization of Sto-Rox needed strong community and local business collaboration. Using those discussions as a base, I presented the four workshops, each with a distinct but connected purpose, questions, and activities. I kept the workshop structure consistent because I believed consistency would not only make the design process easier but also give co-designers a sense of ease and mastery as they got used to the format of the workshops through repetition.</p>
+  <div class="not-prose grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-6 tablet:-mx-[10%]">
+    <AssetImage dir={dir} name="Co-design-Workshop design 1" alt="Workshops 1 and 2: purpose, questions to tackle, activities, and concepts" lightbox />
+    <AssetImage dir={dir} name="Co-design-Workshop design 2" alt="Workshops 3 and 4: purpose, questions to tackle, activities, and concepts" lightbox />
+  </div>
+
+  <h3>Workshop facilitation</h3>
+  <div class="not-prose space-y-14 mt-6">
+    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-8 items-start">
+      <AssetImage dir={dir} name="Co-design-Workshop1" alt="Workshop 1 participants on a video call" />
+      <div class="text-sm text-gray-500 leading-relaxed space-y-3">
+        <p class="text-lg text-gray-900">Workshop 1: Sto-Rox's Past, Present, and Future</p>
+        <p>This workshop was about taking time to reflect on our community. Through this, we found out what values are important to us, as well as what kind of change we needed for a better community.</p>
+        <p class="font-semibold text-gray-700">Structure</p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>Focusing: Sto-Rox's Favorites</li>
+          <li>Information: Concepts &amp; Workshop Purpose</li>
+          <li>Activity 1: Sto-Rox's Capital</li>
+          <li>Activity 2: Rose, Bud &amp; Thorn 2024</li>
+          <li>Closing: Reflect, Share, Suggest</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-8 items-start">
+      <div class="text-sm text-gray-500 leading-relaxed space-y-3">
+        <p class="text-lg text-gray-900">Workshop 2: Sto-Rox's Financial Wellbeing</p>
+        <p>In this workshop, we learned about how small business and community are closely connected to each other through a board game. By understanding this relationship, we figured out some qualities we want to see in local businesses.</p>
+        <p class="font-semibold text-gray-700">Structure</p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>Focusing: $100 for Good</li>
+          <li>Information: Concepts &amp; Workshop Purpose</li>
+          <li>Activity 1: Board Game!</li>
+          <li>Activity 2: Qualities of Healthy Capital</li>
+          <li>Closing: Reflect, Share, Suggest</li>
+        </ol>
+      </div>
+      <AssetImage dir={dir} name="Co-design-Workshop2" alt="Workshop 2 board game with residents, young entrepreneurs, and local economy levels" />
+    </div>
+
+    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-8 items-start">
+      <AssetImage dir={dir} name="Co-design-Workshop3" alt="A participant doing individual card sorting at home" />
+      <div class="text-sm text-gray-500 leading-relaxed space-y-3">
+        <p class="text-lg text-gray-900">Workshop 3: Participatory Capital Design</p>
+        <p>In this workshop, we did our first round of making! I individually visited participants for a round of card sorting, and using the individual card sorting, we did group card sorting. We figured out the elements of the application and selection process. We also thought about the overall structure of the program.</p>
+        <p class="font-semibold text-gray-700">Structure</p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>Focusing: Brand of the Workshop</li>
+          <li>Information: Concepts &amp; Workshop Purpose</li>
+          <li>Activity 1: Card Sorting</li>
+          <li>Activity 2: What If…</li>
+          <li>Closing: Reflect, Share, Suggest</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-8 items-start">
+      <div class="text-sm text-gray-500 leading-relaxed space-y-3">
+        <p class="text-lg text-gray-900">Workshop 4: Sto-Rox's Futures</p>
+        <p>In our final workshop, we looked forward. How would the Participatory Capital workshop move forward? How does the committee evolve? This workshop was facilitated by community leaders, signifying the handoff of the project from an outside designer to the community.</p>
+        <p class="font-semibold text-gray-700">Structure</p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>Focusing: Quiet Reflection</li>
+          <li>Information: Concepts &amp; Workshop Purpose</li>
+          <li>Activity 1: Measure of Success</li>
+          <li>Activity 2: Committee's Future Planning</li>
+          <li>Discussion: Open Discussion on Futures</li>
+          <li>Final Closing</li>
+        </ol>
+      </div>
+      <AssetImage dir={dir} name="Co-design-Workshop4" alt="Community leaders facilitating the final workshop outdoors" />
+    </div>
+  </div>
+
+  <!-- Phase III -->
+  <div id="change" class="not-prose mt-16 pt-8 border-t border-gray-100 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="Co-design-ChangeIcon" alt="Change icon" class="!w-16 shrink-0 !rounded-none" />
+    <div>
+      <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Phase III</p>
+      <p class="text-2xl font-semibold text-gray-900">Change</p>
+      <p class="text-sm text-gray-500 mt-1">Outcomes · Writing</p>
+    </div>
+  </div>
+
+  <h3>Outcome: Community Pay-It-Forward</h3>
+  <p>Community co-designers sought ways for this fund to make a greater impact on the community beyond the grantees. So, as a format of participatory capital, they came up with a Community Pay-It-Forward framework. In this framework, recipients pay back the fund through community engagement rather than through monetary repayment. For example, businesses could provide their space to local youth groups, become career mentors, or provide free haircuts or lunch for the back-to-school day.</p>
+  <p>The co-designers were transforming financial capital into social capital to make a more significant impact than the initial funding. This would also promote building relationships between businesses and communities, fulfilling one of the core needs they identified for Sto-Rox.</p>
+  <p>Looking back, the most amazing thing is that I can trace this great idea forming as early as the street survey and early workshop discussions. This gave me confidence that the co-design process was able to surface the underlying needs of the community and arrive at an attainable and authentic solution.</p>
+
+  <h3>Outcome: Our Ideas Belong Here (OIBH)</h3>
+  <div class="not-prose flow-root mt-4 text-base text-gray-700 leading-relaxed">
+    <div class="mb-6 tablet:float-left tablet:w-1/2 tablet:mr-8 tablet:mb-4">
+      <AssetImage dir={dir} name="Co-design-Outcome" alt="2x2 of co-design engagement: synchronous or asynchronous, in-person or virtual" lightbox />
+    </div>
+    <div class="space-y-4">
+      <p>I was able to achieve fruitful results as a beginner co-designer with great partners, and I am ready to share what I've learned. After this experience, I am convinced that co-design methodology has a place everywhere we make decisions. Some people might think this is radical, but to tackle the wicked problems of our modern, interconnected global society, this is both a necessary and attainable step. To make co-design more regular, it should be more low-key, lightweight, and flexible than the current co-design narrative portrays it. The co-design starter kit, <em>Our Ideas Belong Here (OIBH)</em>, aims to enable anyone to easily start a co-design project for their community.</p>
+      <p>Currently, most co-design workshops are based on synchronous, in-person engagement. However, the world has changed since the Covid-19 pandemic, and we need more hybrid options for community engagement and remote participation. I am excited to position this tool in a virtual space with some asynchronous, in-person resources to fill that gap.</p>
+    </div>
+  </div>
+
+  <div class="not-prose mt-10 flex justify-center">
+    <a href="https://kilthub.cmu.edu/articles/thesis/Our_Ideas_Belong_Here_Co-Designing_a_Community_Investment_Fund/14824905/1?file=28535307" target="_blank" rel="noopener" class="px-6 py-3 text-xs uppercase tracking-widest bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors">Read the thesis book ↗</a>
+  </div>
+</CaseStudyLayout>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.phase-link')];
+  const sections = links.map(l => document.getElementById(l.dataset.phase!)!);
+
+  function update() {
+    const probe = window.innerHeight * 0.35;
+    // Active section = last one whose header has scrolled past the probe line (Context until then)
+    let active = 0;
+    sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= probe) active = i; });
+    links.forEach((l, i) => {
+      const on = i === active;
+      l.classList.toggle('text-gray-900', on);
+      l.classList.toggle('font-semibold', on);
+      l.classList.toggle('text-gray-400', !on);
+      const dot = l.previousElementSibling!;
+      dot.classList.toggle('bg-gray-900', on);
+      dot.classList.toggle('bg-gray-300', !on);
+    });
+  }
+
+  links.forEach((l, i) => l.addEventListener('click', e => {
+    e.preventDefault();
+    sections[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', `#${l.dataset.phase}`);
+  }));
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+</script>
+

@@ -1,0 +1,36 @@
+---
+// Renders an image from /public by base name (extension auto-detected).
+// While the file is missing, shows a dashed placeholder naming the file to add.
+import fs from 'node:fs';
+import path from 'node:path';
+import ImageLightbox from './ImageLightbox.astro';
+
+interface Props {
+  dir: string;        // public folder, e.g. "/images/Co-design project assets"
+  name: string;       // file name without extension
+  alt: string;
+  class?: string;
+  lightbox?: boolean;
+}
+
+const { dir, name, alt, class: className = '', lightbox = false } = Astro.props;
+const exts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'];
+const folder = path.join(process.cwd(), 'public', dir);
+const files = fs.existsSync(folder) ? fs.readdirSync(folder) : [];
+// Case-insensitive match so "Co-design-process.png" satisfies name="Co-design-Process"
+const file = files.find(f => {
+  const dot = f.lastIndexOf('.');
+  return f.slice(0, dot).toLowerCase() === name.toLowerCase() && exts.includes(f.slice(dot + 1).toLowerCase());
+});
+const src = file ? `${dir}/${file}` : null;
+---
+
+{src && lightbox && <ImageLightbox src={src} alt={alt} class={className} />}
+{src && !lightbox && <img src={src} alt={alt} class={`w-full h-auto rounded-lg ${className}`} />}
+{!src && (
+  <div class={`flex flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-amber-300 bg-amber-50 p-8 text-center ${className}`}>
+    <p class="text-sm font-medium text-amber-800">Image needed</p>
+    <p class="text-xs text-amber-700">{dir}/{name}.png</p>
+    <p class="text-xs text-amber-600">{alt}</p>
+  </div>
+)}
