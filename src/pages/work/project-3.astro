@@ -34,11 +34,11 @@ import ImageLightbox from '../../components/ImageLightbox.astro';
     </div>
     <div>
       <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">What I did</p>
-      <p class="text-sm text-gray-500 leading-relaxed">Joined mid-project, introduced a user journey framework that aligned the team, and shipped personalized premium previews under significant eng constraints.</p>
+      <p class="text-sm text-gray-500 leading-relaxed">Joined mid-project, introduced an easy-to-understand user journey framework that aligned the team, and shipped personalized premium previews under significant engineering constraints.</p>
     </div>
     <div>
       <p class="text-xs font-normal uppercase tracking-widest text-gray-400 mb-2">The outcome</p>
-      <p class="text-sm text-gray-500 leading-relaxed">Two waves of iteration narrowed the conversion gap by ~18%. The experiment was sunsetted — but the E2E journey framework was adopted for Copilot trials, and the lead PM specifically cited the "thoughtful E2E user journey" as a model for the business.</p>
+      <p class="text-sm text-gray-500 leading-relaxed">Two waves of iteration improved conversion by ~18%. The experiment was sunsetted as the business shifted its focus to AI — but the E2E journey framework was adopted for AI feature trials, and the lead PM specifically cited the "thoughtful E2E user journey" as a model for the business.</p>
     </div>
   </div>
 
@@ -46,7 +46,7 @@ import ImageLightbox from '../../components/ImageLightbox.astro';
   <div class="not-prose space-y-8 mt-6">
     <!-- Text content -->
     <div class="text-base text-gray-700 leading-relaxed">
-      <p>Freemium conversion sat at 1.5% — below even view-only mode (1.7% vs. 3%). Two years of experimentation hadn't moved the needle. Premium features had a ~6% click rate. Users didn't notice what was locked. When they did click, the upsell dialog appeared with no explanation of what they'd just tried to access. Value was invisible — and so was the reason to upgrade.</p>
+      <p>Freemium conversion was trailing behind other entry points to the product, and two years of experimentation hadn't moved the needle. Few users ever clicked on premium features — most didn't notice what was locked. When they did click, the upsell dialog appeared with no explanation of what they'd just tried to access. Value was invisible — and so was the reason to upgrade.</p>
     </div>
     <!-- Image -->
     <div class="rounded-lg overflow-hidden">
@@ -55,17 +55,21 @@ import ImageLightbox from '../../components/ImageLightbox.astro';
   </div>
 
   <h2>Step 1: User journey framework</h2>
-  <p><strong>Framework first, then flow, then feature</strong></p>
-  <p>With alignment in place, I translated the framework into a concrete end-to-end user flow: goal signals surfacing the right message at the right moment, drop-off recovery paths built in, high-friction actions (like ad blocking) reserved for high-intent users only.</p>
-  <p>Then execution. Some pieces — Interactive Onboarding, the user-intent questionnaire — were already shipped. The remaining work was designing personalized premium previews: a two-week trial of features tailored to each user's goals.</p>
-  <p>When a company-wide shift toward AI cut engineering capacity mid-project, I pivoted to Teaching Popovers instead of ribbon modifications — faster to ship, no UX integrity lost.</p>
-  <div class="not-prose mt-6 rounded-lg overflow-hidden">
-    <img src="/images/Scribble-15.jpg" alt="User journey framework diagram showing preview, trial offer at peak value, then messaging and throttle" class="w-auto max-w-full h-auto" />
-  </div>
+  <p><strong>Aligning the team around a framework for future decision-making</strong></p>
+  <p>The problem I saw was misalignment among team members on how much friction to introduce, and when. After examining the core user mental model and the business goal, it was clear to me: value first, friction second.</p>
+  <figure class="not-prose my-6">
+    <div class="rounded-lg overflow-hidden">
+      <img src="/images/Scribble-15.jpg" alt="User journey framework diagram showing preview, trial offer at peak value, then messaging and throttle" class="w-auto max-w-full h-auto" />
+    </div>
+    <figcaption class="mt-2 text-sm text-gray-400 leading-relaxed">I drew the framework live on a Teams call when engineering was struggling to see what that meant for our feature release schedule.</figcaption>
+  </figure>
+  <p>The framework put surfacing the right message at the right moment first, with drop-off recovery paths built in and high-friction actions (like ad blocking) reserved for high-intent users only.</p>
+  <p>With the framework in place, the team was aligned and decisions became easy to make together. From there, we moved into execution: Interactive Onboarding, the user-intent questionnaire, and personalized premium previews.</p>
 
   <h2>Step 2: User flow</h2>
-  <p><strong>Set of fragmented growth ideas into a cohesive end‑to‑end user flow</strong></p>
+  <p><strong>Turning fragmented growth ideas into a cohesive end‑to‑end user flow</strong></p>
   <p>The flow was intentionally designed to prioritize time‑to‑value, using user goal signals to surface the right message at the right moment and drive premium conversion. I paired this with clear drop‑off recovery paths and reserved high‑friction actions—such as ad blocking—for high‑intent users who had already formed habits in our apps. The result was a flow that balanced growth outcomes with user trust, positioning upsell as respectful persuasion rather than interruption.</p>
+  <p class="text-sm text-gray-400">Click to expand the image.</p>
   <div class="not-prose mt-6 tablet:-mx-[10%]">
     <ImageLightbox
       src="/images/Personalized Preview-Flow.png"
@@ -73,9 +77,11 @@ import ImageLightbox from '../../components/ImageLightbox.astro';
     />
   </div>
 
-  <h2>Step 3: Implementing Personalized Preview</h2>
+  <h2>Step 3: Implementing features — Personalized Preview</h2>
   <p><strong>Less engineering, same experience — the case for pattern reuse</strong></p>
-  <p>With priorities and flow aligned, we moved to unify the ideas into a cohesive experience. Some concepts, like Interactive Onboarding and the user‑intent questionnaire, were already shipped, while personalized premium feature previews still needed to be designed. During this phase, company resourcing shifted heavily toward AI, significantly limiting engineering capacity. To move forward, we leveraged existing UX patterns wherever possible—using Teaching Popovers instead of modifying the ribbon, which carried high engineering cost. This approach allowed us to ship a personalized experience quickly, preserve UX integrity, and deliver meaningful user value despite tight technical constraints.</p>
+  <p>Some concepts, like Interactive Onboarding and the user‑intent questionnaire, were already designed; personalized premium feature previews still needed to be.</p>
+  <p>During this phase, company resourcing shifted heavily toward AI, significantly limiting engineering capacity. To move forward, we leveraged existing UX patterns wherever possible, such as using Teaching Popovers instead of modifying the ribbon, which carried a high engineering cost (see A, the originally proposed design, versus B, which leverages existing components).</p>
+  <p>This approach allowed us to ship a personalized experience quickly, preserve UX integrity, and deliver meaningful user value despite tight technical constraints.</p>
 
   <img src="/images/Personalized Preview-Ribbon.gif" alt="Ribbon engineering comparison" class="w-full rounded-lg my-6" />
 
@@ -84,7 +90,7 @@ import ImageLightbox from '../../components/ImageLightbox.astro';
   <VimeoEmbed id="1172788540" />
 
   <h2>Impact</h2>
-  <p>A 4-month AB test across new markets showed real progress — Wave 1 reduced the conversion gap, Wave 2 brought it to ~18% closed. However, it was not enough to reach financial breakeven within 3 years. The experiment was sunsetted.</p>
+  <p>A 4-month AB test across new markets showed real progress — Wave 1 improved conversion, and Wave 2 brought the total lift to ~18%. However, it wasn't enough to reach the business goal within 3 years. The experiment was sunsetted.</p>
   <p>The framework wasn't. The E2E journey and side-pane patterns were adopted directly into Copilot trial and adoption work. The lead PM noted: "all the learnings we can take to other areas of the business like Copilot trials and Copilot adoption [are] a huge positive."</p>
 
   <div class="not-prose grid grid-cols-1 gap-6 mt-8">
