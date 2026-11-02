@@ -31,12 +31,11 @@ src/
     index.astro           — homepage (hero + project list)
     about.astro
     contact.astro
-    unlock.astro          — password-protected content gate
     work/
       project-1.astro     — case studies (export `projectMeta`)
-      project-2.astro
       project-3.astro
-      project-4.astro
+  archive/
+    work/                 — archived case studies (not routed; move back to restore)
   components/
     ProjectCard.astro     — card used on homepage work list
     ImageGallery.astro
@@ -56,7 +55,7 @@ export const projectMeta = {
   description: '',
   href: '/work/project-N',
   tags: ['Tag1', 'Tag2'],
-  locked: false,        // true = password-protected
+  locked: false,        // shows a 🔒 in the card meta (no password gate exists)
   date: 'YYYY',
   image: '/images/filename.png',
 };
