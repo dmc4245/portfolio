@@ -1,0 +1,147 @@
+---
+// Shows the first slide as a preview; clicking opens a lightbox that
+// auto-advances through every image in `dir` (natural sort) and loops.
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  dir: string;        // public folder, e.g. "/images/Microsoft co-design assets/Conference slides"
+  alt: string;
+  interval?: number;  // ms per slide, default 5000
+  label?: string;     // badge text, default "Play N slides"
+  class?: string;
+}
+
+const { dir, alt, interval = 5000, label, class: className = '' } = Astro.props;
+const exts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'];
+const folder = path.join(process.cwd(), 'public', dir);
+const files = (fs.existsSync(folder) ? fs.readdirSync(folder) : [])
+  .filter(f => exts.includes(f.slice(f.lastIndexOf('.') + 1).toLowerCase()))
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+const slides = files.map(f => `${dir}/${f}`);
+const id = `ss-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+{slides.length > 0 && (
+  <div class={`not-prose ${className}`}>
+    <button type="button" class="slideshow-trigger group relative block w-full cursor-zoom-in" data-slideshow={id} aria-label={`Open slideshow: ${alt}`}>
+      <img src={slides[0]} alt={alt} class="w-full h-auto rounded-lg" />
+      <span class="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1 text-xs text-white transition-colors group-hover:bg-black/80">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="white" aria-hidden="true"><path d="M2 1l7 4-7 4z" /></svg>
+        {label ?? `Play ${slides.length} slides`}
+      </span>
+    </button>
+
+    <div
+      id={id}
+      class="slideshow-overlay fixed inset-0 z-50 hidden bg-black/85"
+      role="dialog"
+      aria-modal="true"
+      aria-label={alt}
+      data-interval={interval}
+    >
+      <div class="flex h-full flex-col items-center justify-center p-8">
+        <div class="relative w-full max-w-[90vw] max-h-[80vh] aspect-video" style="width: min(90vw, calc(80vh * 16 / 9));">
+          {slides.map((src, i) => (
+            <img
+              src={src}
+              alt={`${alt} — slide ${i + 1} of ${slides.length}`}
+              loading="lazy"
+              class={`slideshow-slide absolute inset-0 h-full w-full rounded-lg object-contain bg-white shadow-2xl transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+            />
+          ))}
+          <button class="slideshow-prev absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors" aria-label="Previous slide">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="slideshow-next absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors" aria-label="Next slide">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="slideshow-close absolute top-2 right-2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors text-sm leading-none" aria-label="Close">✕</button>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-xs text-white/70" style="font-family: 'IBM Plex Mono', monospace;">
+          <button class="slideshow-toggle hover:text-white transition-colors" aria-label="Pause slideshow">Pause</button>
+          <span class="slideshow-counter">1 / {slides.length}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+{slides.length === 0 && (
+  <div class={`not-prose flex flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-amber-300 bg-amber-50 p-8 text-center ${className}`}>
+    <p class="text-sm font-medium text-amber-800">Slides needed</p>
+    <p class="text-xs text-amber-700">{dir}/</p>
+    <p class="text-xs text-amber-600">{alt}</p>
+  </div>
+)}
+
+<script>
+  function initSlideshows() {
+    document.querySelectorAll<HTMLElement>('.slideshow-trigger').forEach((trigger) => {
+      if (trigger.dataset.init) return;
+      trigger.dataset.init = '1';
+
+      const overlay = document.getElementById(trigger.dataset.slideshow!)!;
+      const slides = overlay.querySelectorAll<HTMLImageElement>('.slideshow-slide');
+      const counter = overlay.querySelector<HTMLElement>('.slideshow-counter')!;
+      const toggle = overlay.querySelector<HTMLElement>('.slideshow-toggle')!;
+      const interval = parseInt(overlay.dataset.interval ?? '5000');
+      let current = 0;
+      let playing = false;
+      let timer: ReturnType<typeof setInterval> | undefined;
+
+      function goTo(index: number) {
+        slides[current].classList.replace('opacity-100', 'opacity-0');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.replace('opacity-0', 'opacity-100');
+        counter.textContent = `${current + 1} / ${slides.length}`;
+      }
+
+      function play() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), interval);
+        playing = true;
+        toggle.textContent = 'Pause';
+        toggle.setAttribute('aria-label', 'Pause slideshow');
+      }
+
+      function pause() {
+        clearInterval(timer);
+        playing = false;
+        toggle.textContent = 'Play';
+        toggle.setAttribute('aria-label', 'Play slideshow');
+      }
+
+      function open() {
+        overlay.classList.remove('hidden');
+        goTo(0);
+        play();
+        document.addEventListener('keydown', onKey);
+      }
+
+      function close() {
+        overlay.classList.add('hidden');
+        pause();
+        document.removeEventListener('keydown', onKey);
+      }
+
+      function onKey(e: KeyboardEvent) {
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') { goTo(current + 1); if (playing) play(); }
+        if (e.key === 'ArrowLeft') { goTo(current - 1); if (playing) play(); }
+      }
+
+      trigger.addEventListener('click', open);
+      overlay.querySelector('.slideshow-close')!.addEventListener('click', close);
+      overlay.querySelector('.slideshow-next')!.addEventListener('click', () => { goTo(current + 1); if (playing) play(); });
+      overlay.querySelector('.slideshow-prev')!.addEventListener('click', () => { goTo(current - 1); if (playing) play(); });
+      toggle.addEventListener('click', () => (playing ? pause() : play()));
+      // Click on the dark backdrop closes
+      overlay.addEventListener('click', (e) => {
+        if (!(e.target as HTMLElement).closest('.aspect-video, .slideshow-toggle')) close();
+      });
+    });
+  }
+
+  initSlideshows();
+  document.addEventListener('astro:page-load', initSlideshows);
+</script>

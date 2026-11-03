@@ -1,0 +1,88 @@
+---
+export const projectMeta = {
+  title: "Microsoft community: Co-designing for DE&I",
+  image: "/images/Thumbnails/Resume/Project 8.svg",
+  description: "Bringing authentic voices from historically excluded communities into Microsoft product making through co-design.",
+  tags: ["Design process", "DE&I", "Toolkit"],
+  date: "2021 – ongoing",
+  locked: false,
+  href: "/work/project-8",
+};
+
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import AssetImage from '../../components/AssetImage.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import SlideshowLightbox from '../../components/SlideshowLightbox.astro';
+import FlipBook from '../../components/FlipBook.astro';
+
+const dir = '/images/Microsoft co-design assets';
+---
+
+<CaseStudyLayout
+  title="Microsoft community: Co-designing for DE&I"
+  description="Bringing authentic voices from historically excluded communities into Microsoft product making through co-design."
+  tags={["Design process", "DE&I", "Toolkit"]}
+  role="Founding member, organizer, designer, writer"
+  timeline="2021 – ongoing"
+  tools="Director of Inclusive Design, Microsoft design community"
+  toolsLabel="Collaboration"
+>
+  <div class="not-prose mb-12">
+    <AssetImage dir={dir} name="MsCodesign-Wave-divider" alt="" class="!rounded-none" />
+  </div>
+
+  <div id="context" class="not-prose mb-6 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="MsCodesign-Star-red" alt="" class="!w-12 shrink-0 !rounded-none" />
+    <p class="text-2xl font-semibold text-gray-900">Where it began...</p>
+  </div>
+  <p>I first learned about the concept of co-design during my studies at the Carnegie Mellon School of Design. I was fascinated by the idea of <strong>leveraging lived-experience knowledge in the design process</strong> to make better, socially responsible products and services.</p>
+  <p>I researched co-design more deeply through my <a href="/work/project-6">master's thesis on a participatory community fund</a> with co-design expert Prof. Kristin Hughes.</p>
+  <div class="not-prose mt-8 flex justify-center overflow-hidden rounded-2xl bg-[#FEC202] px-6 pt-10">
+    <AssetImage dir={dir} name="MsCodesign-Origin" alt="Selfie with Sto-Rox community co-designers from my thesis project" class="!w-auto max-h-64 tablet:max-h-80 !rounded-none grayscale" />
+  </div>
+
+  <!-- Section timeline: inline on small screens, fixed beside the article on desktop -->
+  <SectionNav items={[
+    { id: 'context', label: 'Context' },
+    { id: 'proof-of-concept', label: 'Proof of concept' },
+    { id: 'conference', label: 'Design conference' },
+    { id: 'playbook', label: 'Co-Design Playbook (WIP)' },
+  ]} />
+
+  <div id="proof-of-concept" class="not-prose mt-16 pt-8 border-t border-gray-100 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="MsCodesign-Sparkle-green" alt="" class="!w-12 shrink-0 !rounded-none" />
+    <p class="text-2xl font-semibold text-gray-900">Proof of concept</p>
+  </div>
+  <p>At Microsoft, I saw that there was a <strong>gap in authentic user voices in product making</strong>, especially voices from historically excluded communities. Co-design was the perfect way to bridge this gap.</p>
+  <p>I used Microsoft's annual hackathon to start the project and build momentum for co-design within the Microsoft design community.</p>
+  <blockquote class="not-prose my-10 pl-6 border-l-4 border-[#FEC202]">
+    <p class="text-2xl leading-snug text-gray-900">How might we co-design beneficial productivity products for everyone?</p>
+  </blockquote>
+
+  <p>We paired a Microsoft product maker with customers who use Microsoft Office. Using platforms like UserTesting, we recruited customers from marginalized segments of the population (income, internet access, education).</p>
+  <p>We gathered the outcomes and presented them as our final insights at the end of hackathon week.</p>
+  <SlideshowLightbox dir={`${dir}/Hackathon deck`} alt="Hackathon deck: Building stronger customer relationships through co-design" label="See the deck" class="mt-8" />
+
+  <div id="conference" class="not-prose mt-16 pt-8 border-t border-gray-100 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="MsCodesign-Sparkle-yellow" alt="" class="!w-12 shrink-0 !rounded-none" />
+    <p class="text-2xl font-semibold text-gray-900">Microsoft design conference</p>
+  </div>
+  <div class="tablet:grid tablet:grid-cols-[1fr_14rem] tablet:gap-10 tablet:items-start">
+    <div>
+      <p>Building on what we learned from co-design testing during the hackathon, we put together the <strong><em>Co-design for Historically Excluded Customers</em></strong> guidelines. We submitted them and were selected to present at the Microsoft design conference.</p>
+      <p>The enthusiasm from the design community made us one of the finalists for external publishing*, and Christina Mallon, Director of Inclusive Design, reached out to continue the work with official company support.</p>
+      <p class="text-sm text-gray-400">*Currently under legal review.</p>
+    </div>
+    <div class="not-prose mt-6">
+      <AssetImage dir={dir} name="MsCodesign-Conference" alt="Microsoft Design Week 2025 speaker page: Shifting the design process for DE&I through co-design" class="max-w-[16rem] mx-auto tablet:max-w-none shadow-md" />
+    </div>
+  </div>
+
+  <div id="playbook" class="not-prose mt-16 pt-8 border-t border-gray-100 flex items-center gap-6 scroll-mt-20">
+    <AssetImage dir={dir} name="MsCodesign-Star-red" alt="" class="!w-12 shrink-0 !rounded-none" />
+    <p class="text-2xl font-semibold text-gray-900">Co-Design Playbook (WIP)</p>
+  </div>
+  <p>I contributed to every chapter and was the lead writer for “How to fit co-design into the product lifecycle.”</p>
+  <p>The chapter starts with a question: how can co-design, often used in civic and grassroots projects, be adapted to corporate culture? The answer: start where you are. We lower the barrier to entry for Microsoft product teams while holding to the standard of ethical co-design, offering three simple flavors of co-design as a framework.</p>
+  <FlipBook dir={`${dir}/Playbook pages`} alt="Co-design for DE&I Guidebook" endText="More coming soon!" class="mt-10" />
+</CaseStudyLayout>

@@ -1,0 +1,139 @@
+---
+// Page-turning book built from every image in `dir` (natural sort).
+// The first image is the cover; each leaf carries two pages (front/back)
+// and rotates around the spine when turned.
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  dir: string;        // public folder, e.g. "/images/Microsoft co-design assets/Playbook pages"
+  alt: string;
+  endText?: string;   // optional closing page appended after the images
+  class?: string;
+}
+
+const { dir, alt, endText, class: className = '' } = Astro.props;
+const exts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'];
+const folder = path.join(process.cwd(), 'public', dir);
+const pages = (fs.existsSync(folder) ? fs.readdirSync(folder) : [])
+  .filter(f => exts.includes(f.slice(f.lastIndexOf('.') + 1).toLowerCase()))
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+  .map(f => `${dir}/${f}`) as (string | null)[];
+// null marks the text closing page
+if (endText) pages.push(null);
+// Pair pages into leaves: [front, back]; back is undefined when the page count is odd
+const leaves: [string | null, string | null | undefined][] = [];
+for (let i = 0; i < pages.length; i += 2) leaves.push([pages[i], pages[i + 1]]);
+---
+
+{pages.length > 0 && (
+  <div class={`flipbook not-prose select-none ${className}`} data-odd={pages.length % 2 === 1 ? 'true' : 'false'} role="region" aria-label={alt} tabindex="0">
+    <div class="flipbook-stage relative mx-auto w-full" style="perspective: 2400px;">
+      <div class="flipbook-book relative ml-[50%] w-1/2 transition-transform duration-700 ease-in-out" style="aspect-ratio: 612 / 792; transform: translateX(-50%);">
+        {leaves.map(([front, back], i) => (
+          <div
+            class="flipbook-leaf absolute inset-0 origin-left cursor-pointer transition-transform duration-700 ease-in-out"
+            style={`transform-style: preserve-3d; z-index: ${leaves.length - i};`}
+            data-index={i}
+          >
+            {front ? (
+              <img
+                src={front}
+                alt={`${alt}, page ${i * 2 + 1}`}
+                loading={i < 2 ? 'eager' : 'lazy'}
+                draggable="false"
+                class="absolute inset-0 h-full w-full rounded-r-md object-cover shadow-lg"
+                style="backface-visibility: hidden;"
+              />
+            ) : (
+              <div class="absolute inset-0 flex items-center justify-center rounded-r-md bg-[#212121] shadow-lg" style="backface-visibility: hidden;">
+                <p class="text-xl tablet:text-3xl font-light text-white">{endText}</p>
+              </div>
+            )}
+            <div class="absolute inset-0 rounded-l-md bg-white shadow-lg" style="backface-visibility: hidden; transform: rotateY(180deg);">
+              {back ? (
+                <img
+                  src={back}
+                  alt={`${alt}, page ${i * 2 + 2}`}
+                  loading="lazy"
+                  draggable="false"
+                  class="h-full w-full rounded-l-md object-cover"
+                />
+              ) : back === null && (
+                <div class="flex h-full w-full items-center justify-center rounded-l-md bg-[#212121]">
+                  <p class="text-xl tablet:text-3xl font-light text-white">{endText}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-center justify-center gap-4 text-xs text-gray-500" style="font-family: 'IBM Plex Mono', monospace;">
+      <button class="flipbook-prev w-8 h-8 rounded-full border border-gray-200 hover:border-gray-400 flex items-center justify-center transition-colors disabled:opacity-30" aria-label="Previous page">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="flipbook-counter min-w-[7rem] text-center">Cover</span>
+      <button class="flipbook-next w-8 h-8 rounded-full border border-gray-200 hover:border-gray-400 flex items-center justify-center transition-colors disabled:opacity-30" aria-label="Next page">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+)}
+
+<script>
+  function initFlipbooks() {
+    document.querySelectorAll<HTMLElement>('.flipbook').forEach((book) => {
+      if (book.dataset.init) return;
+      book.dataset.init = '1';
+
+      const leaves = [...book.querySelectorAll<HTMLElement>('.flipbook-leaf')];
+      const inner = book.querySelector<HTMLElement>('.flipbook-book')!;
+      const counter = book.querySelector<HTMLElement>('.flipbook-counter')!;
+      const prev = book.querySelector<HTMLButtonElement>('.flipbook-prev')!;
+      const next = book.querySelector<HTMLButtonElement>('.flipbook-next')!;
+      // With an odd page count the last leaf has no back, so the book ends on a spread
+      const odd = book.dataset.odd === 'true';
+      const maxTurned = odd ? leaves.length - 1 : leaves.length;
+      const total = odd ? leaves.length * 2 - 1 : leaves.length * 2;
+      let turned = 0; // number of leaves turned
+
+      function render() {
+        leaves.forEach((leaf, i) => {
+          const isTurned = i < turned;
+          leaf.style.transform = isTurned ? 'rotateY(-180deg)' : 'rotateY(0deg)';
+          // Turned leaves stack left (latest on top); unturned stack right (next on top)
+          leaf.style.zIndex = String(isTurned ? i + 1 : leaves.length - i);
+        });
+        // Closed: centre the cover. Finished: centre the back page. Open: centre the spread.
+        const shift = turned === 0 ? '-50%' : turned === leaves.length ? '50%' : '0%';
+        inner.style.transform = `translateX(${shift})`;
+        if (turned === 0) counter.textContent = 'Cover';
+        else if (turned === leaves.length) counter.textContent = `${total} / ${total}`;
+        else counter.textContent = `${turned * 2}–${turned * 2 + 1} / ${total}`;
+        prev.disabled = turned === 0;
+        next.disabled = turned === maxTurned;
+      }
+
+      function go(delta: number) {
+        turned = Math.max(0, Math.min(maxTurned, turned + delta));
+        render();
+      }
+
+      // Clicking a page on the right turns forward; on the left turns back
+      leaves.forEach((leaf, i) => leaf.addEventListener('click', () => go(i < turned ? -1 : 1)));
+      prev.addEventListener('click', () => go(-1));
+      next.addEventListener('click', () => go(1));
+      book.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') go(1);
+        if (e.key === 'ArrowLeft') go(-1);
+      });
+
+      render();
+    });
+  }
+
+  initFlipbooks();
+  document.addEventListener('astro:page-load', initFlipbooks);
+</script>
