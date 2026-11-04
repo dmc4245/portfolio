@@ -75,7 +75,7 @@ Diana wants this section nav on case study pages going forward. Use the `Section
 - Desktop (1200px+): fixed to the left of the article, always visible
 - Scroll-spy: the current section's label turns bold `text-gray-900` and its dot fills `bg-gray-900`; Context is active until the first section is reached
 - Clicking an item smooth-scrolls to the section (targets use `scroll-mt-20`)
-- Below desktop: same list renders inline under the intro/Process area
+- Below desktop: hidden (no inline list on mobile or tablet)
 
 ## Dev Commands
 ```bash
