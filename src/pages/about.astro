@@ -17,7 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Bio -->
       <div class="tablet:col-span-2 space-y-5 text-gray-600 leading-relaxed">
         <p>
-          Designer who cares about the whole system, not just the screen. I've spent my career designing at scale—privacy experiences for millions of Microsoft users, theatre scenic design for Broadway, events for the White House and National Geographic, and growth funnels that actually respect people. I'm drawn to messy, complex problems where design meets technology, community, and real stakes.
+          Designer who cares about the whole system, not just the screen. I've spent my career designing at scale—privacy experiences for millions of Microsoft users, <a href="https://www.operatoday.com/content/2016/04/marc_blitzstein.php#:~:text=Diana%20Chun%E2%80%99s%20set%20design" target="_blank" rel="noopener noreferrer" class="bio-link"><img src="/icons/Linkout.svg" alt="" aria-hidden="true" class="bio-link-icon" />theatre scenic design for Broadway<span class="bio-link-url">operatoday.com/content/2016/04/marc_blitzstein.php</span></a>, <a href="https://www.politico.com/live-events/2017/12/05/women-rule-fifth-annual-summit-243631" target="_blank" rel="noopener noreferrer" class="bio-link"><img src="/icons/Linkout.svg" alt="" aria-hidden="true" class="bio-link-icon" />events for the White House and National Geographic<span class="bio-link-url">politico.com/live-events/2017/12/05/women-rule-fifth-annual-summit-243631</span></a>, and growth funnels that actually respect people. I'm drawn to messy, complex problems where design meets technology, community, and real stakes.
         </p>
         <p>
           <span id="family-trigger">When I'm not designing, I'm spending time playing board games, swimming laps, and going on long walks with my partner, two kids, and a chihuahua.</span>
@@ -47,6 +47,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
+  // Keep the URL tooltip inside the viewport when a link starts near the line end.
+  document.querySelectorAll<HTMLAnchorElement>('.bio-link').forEach((link) => {
+    const tip = link.querySelector<HTMLElement>('.bio-link-url');
+    if (!tip) return;
+    const place = () => {
+      tip.style.transform = '';
+      const overflow = tip.getBoundingClientRect().right - (window.innerWidth - 16);
+      if (overflow > 0) tip.style.transform = `translateX(${-overflow}px)`;
+    };
+    link.addEventListener('mouseenter', place);
+    link.addEventListener('focus', place);
+  });
+
   const trigger = document.getElementById('family-trigger');
   const photo = document.getElementById('about-photo') as HTMLImageElement;
   const original = '/images/diana-chun.jpg';
@@ -81,6 +94,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transition: opacity 0.15s ease;
   }
   .about-link-icon:hover .about-link-tooltip {
+    opacity: 1;
+  }
+  .bio-link {
+    position: relative;
+    color: #032F98;
+    text-decoration: underline;
+    text-decoration-color: rgba(3, 47, 152, 0.3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .bio-link:hover,
+  .bio-link:focus-visible {
+    text-decoration-color: #032F98;
+  }
+  .bio-link-icon {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    margin-right: 0.3em;
+    vertical-align: -0.1em;
+  }
+  .bio-link-url {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    max-width: min(320px, 80vw);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #111;
+    color: #fff;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .bio-link:hover .bio-link-url,
+  .bio-link:focus-visible .bio-link-url {
     opacity: 1;
   }
 </style>
